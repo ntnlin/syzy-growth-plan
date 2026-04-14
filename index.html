@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Syzy — Growth & Product Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --brand:#2dd4bf;--brand-dim:rgba(45,212,191,0.12);--brand-border:rgba(45,212,191,0.3);
+  --bg-base:#000;--bg-card:#0d0d0d;--bg-card2:#141414;
+  --border:rgba(255,255,255,0.07);--border-mid:rgba(255,255,255,0.1);
+  --text-primary:#f0f0f0;--text-secondary:#8a9a96;--text-tertiary:#555;
+  --radius-md:8px;--radius-lg:12px;
+  --yellow:#fbbf24;--red:#f87171;--blue:#60a5fa;--purple:#a78bfa;--green-acc:#34d399;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg-base);color:var(--text-primary);min-height:100vh;padding:2rem 1.5rem 5rem;}
+.page{max-width:900px;margin:0 auto;}
+
+/* HEADER */
+.header{display:flex;align-items:center;gap:16px;padding:1.25rem 1.75rem;background:#060606;border:0.5px solid var(--border-mid);border-radius:var(--radius-lg);margin-bottom:2rem;}
+.hd{width:1px;height:28px;background:var(--border-mid);margin:0 4px;}
+.htag{font-size:10px;font-weight:500;color:var(--brand);letter-spacing:0.1em;text-transform:uppercase;background:var(--brand-dim);border:0.5px solid var(--brand-border);padding:2px 8px;border-radius:999px;display:inline-block;}
+.hdate{font-size:12px;color:var(--text-tertiary);margin-top:5px;font-family:'DM Mono',monospace;}
+
+/* TOP PLAN SWITCHER */
+.plan-tabs{display:flex;gap:6px;margin-bottom:1.75rem;}
+.ptab{flex:1;padding:13px 12px;border-radius:var(--radius-md);border:0.5px solid var(--border-mid);background:var(--bg-card2);cursor:pointer;text-align:center;transition:all .15s;}
+.ptab-icon{font-size:16px;margin-bottom:4px;}
+.ptab-label{font-size:13px;font-weight:600;color:var(--text-secondary);}
+.ptab-sub{font-size:10px;color:var(--text-tertiary);margin-top:2px;font-family:'DM Mono',monospace;}
+.ptab.active{background:var(--brand-dim);border-color:var(--brand-border);}
+.ptab.active .ptab-label{color:var(--brand);}
+.ptab.active .ptab-sub{color:rgba(45,212,191,0.65);}
+.ptab:hover:not(.active){background:#1a1c1c;}
+.plan-panel{display:none;}
+.plan-panel.active{display:block;}
+
+/* MONTH TABS */
+.month-tabs{display:flex;gap:8px;margin-bottom:1.5rem;}
+.mtab{flex:1;padding:12px 10px;border-radius:var(--radius-md);border:0.5px solid var(--border-mid);background:var(--bg-card2);cursor:pointer;text-align:center;transition:all .15s;}
+.mtab-num{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-tertiary);margin-bottom:3px;}
+.mtab-label{font-size:13px;font-weight:600;color:var(--text-secondary);}
+.mtab-date{font-size:10px;color:var(--text-tertiary);font-family:'DM Mono',monospace;margin-top:2px;}
+.mtab.m1.active{background:rgba(45,212,191,0.08);border-color:rgba(45,212,191,0.3);}
+.mtab.m1.active .mtab-label{color:var(--brand);}
+.mtab.m1.active .mtab-num{color:var(--brand);}
+.mtab.m2.active{background:rgba(251,191,36,0.08);border-color:rgba(251,191,36,0.3);}
+.mtab.m2.active .mtab-label{color:var(--yellow);}
+.mtab.m2.active .mtab-num{color:var(--yellow);}
+.mtab.m3.active{background:rgba(167,139,250,0.08);border-color:rgba(167,139,250,0.3);}
+.mtab.m3.active .mtab-label{color:var(--purple);}
+.mtab.m3.active .mtab-num{color:var(--purple);}
+.mtab:hover:not(.active){background:#1a1c1c;}
+.month-panel{display:none;}
+.month-panel.active{display:block;}
+
+/* PHASE TABS */
+.phase-tabs{display:flex;gap:8px;margin-bottom:1.5rem;}
+.phtab{flex:1;padding:12px 10px;border-radius:var(--radius-md);border:0.5px solid var(--border-mid);background:var(--bg-card2);cursor:pointer;text-align:center;transition:all .15s;}
+.phtab-num{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-tertiary);margin-bottom:3px;}
+.phtab-label{font-size:13px;font-weight:600;color:var(--text-secondary);}
+.phtab-date{font-size:10px;color:var(--text-tertiary);font-family:'DM Mono',monospace;margin-top:2px;}
+.phtab.ph1.active{background:rgba(45,212,191,0.08);border-color:rgba(45,212,191,0.3);}
+.phtab.ph1.active .phtab-label{color:var(--brand);}
+.phtab.ph1.active .phtab-num{color:var(--brand);}
+.phtab.ph2.active{background:rgba(251,191,36,0.08);border-color:rgba(251,191,36,0.3);}
+.phtab.ph2.active .phtab-label{color:var(--yellow);}
+.phtab.ph2.active .phtab-num{color:var(--yellow);}
+.phtab.ph3.active{background:rgba(167,139,250,0.08);border-color:rgba(167,139,250,0.3);}
+.phtab.ph3.active .phtab-label{color:var(--purple);}
+.phtab.ph3.active .phtab-num{color:var(--purple);}
+.phtab:hover:not(.active){background:#1a1c1c;}
+.phase-panel{display:none;}
+.phase-panel.active{display:block;}
+
+/* SECTION */
+.sec-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-tertiary);margin-bottom:10px;}
+.sec-heading{display:flex;align-items:center;gap:12px;margin:2rem 0 1rem;padding-bottom:10px;border-bottom:0.5px solid var(--border);}
+.sec-num{width:26px;height:26px;border-radius:50%;background:var(--brand-dim);border:0.5px solid var(--brand-border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--brand);flex-shrink:0;font-family:'DM Mono',monospace;}
+.sec-title{font-size:16px;font-weight:700;color:var(--text-primary);}
+.sec-sub{font-size:11px;color:var(--text-secondary);margin-top:2px;}
+
+/* PHASE HEADER BAR */
+.phase-header-bar{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--bg-card2);border:0.5px solid var(--border);border-radius:var(--radius-lg);margin-bottom:1.25rem;}
+.ph-ind{width:3px;border-radius:2px;align-self:stretch;flex-shrink:0;min-height:40px;}
+.ph-title{font-size:17px;font-weight:700;color:var(--text-primary);}
+.ph-dates{font-size:11px;color:var(--text-secondary);margin-top:3px;font-family:'DM Mono',monospace;}
+
+/* WEEK BLOCK */
+.week-block{margin-bottom:8px;border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
+.week-header{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:0.5px solid var(--border);}
+.wk1 .week-header{background:rgba(45,212,191,0.07);}
+.wk2 .week-header{background:rgba(251,191,36,0.06);}
+.wk3 .week-header{background:rgba(96,165,250,0.06);}
+.wk4 .week-header{background:rgba(167,139,250,0.06);}
+.wnum{font-size:11px;font-weight:700;font-family:'DM Mono',monospace;padding:3px 9px;border-radius:999px;flex-shrink:0;white-space:nowrap;}
+.wk1 .wnum{background:rgba(45,212,191,0.15);color:var(--brand);border:0.5px solid rgba(45,212,191,0.3);}
+.wk2 .wnum{background:rgba(251,191,36,0.12);color:var(--yellow);border:0.5px solid rgba(251,191,36,0.3);}
+.wk3 .wnum{background:rgba(96,165,250,0.12);color:var(--blue);border:0.5px solid rgba(96,165,250,0.3);}
+.wk4 .wnum{background:rgba(167,139,250,0.12);color:var(--purple);border:0.5px solid rgba(167,139,250,0.3);}
+.week-title{font-size:13px;font-weight:600;color:var(--text-primary);flex:1;}
+.week-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.tag{font-size:10px;font-weight:500;padding:2px 7px;border-radius:999px;border:0.5px solid;}
+.tag-x{background:rgba(255,255,255,0.05);color:var(--text-secondary);border-color:var(--border-mid);}
+.tag-dc{background:rgba(167,139,250,0.07);color:var(--purple);border-color:rgba(167,139,250,0.2);}
+.tag-stellar{background:rgba(45,212,191,0.07);color:var(--brand);border-color:rgba(45,212,191,0.2);}
+.tag-content{background:rgba(251,191,36,0.07);color:var(--yellow);border-color:rgba(251,191,36,0.2);}
+.tag-red{background:rgba(248,113,113,0.07);color:var(--red);border-color:rgba(248,113,113,0.2);}
+.tag-blue{background:rgba(96,165,250,0.07);color:var(--blue);border-color:rgba(96,165,250,0.2);}
+.week-body{padding:10px 16px;background:var(--bg-card);}
+.week-item{display:flex;gap:10px;padding:5px 0;border-bottom:0.5px solid var(--border);font-size:12.5px;color:var(--text-secondary);line-height:1.55;align-items:flex-start;}
+.week-item:last-child{border-bottom:none;}
+.wi-arr{color:var(--text-tertiary);flex-shrink:0;padding-top:1px;}
+.week-item strong{color:var(--text-primary);font-weight:500;}
+
+/* GRID */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px;}
+@media(max-width:640px){.grid2,.grid3,.plan-tabs,.month-tabs,.phase-tabs{grid-template-columns:1fr;flex-direction:column;}}
+
+/* CARD */
+.card{background:var(--bg-card);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem;}
+.card-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:#b8ceca;margin-bottom:10px;display:flex;align-items:center;gap:7px;}
+.dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.g{background:var(--brand);}.y{background:var(--yellow);}.r{background:var(--red);}.b{background:var(--blue);}.p{background:var(--purple);}
+
+/* LIST */
+.list{list-style:none;}
+.list li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text-secondary);padding:6px 0;border-bottom:0.5px solid var(--border);line-height:1.55;}
+.list li:last-child{border-bottom:none;}
+.num{font-size:11px;color:var(--text-tertiary);min-width:18px;padding-top:1px;flex-shrink:0;font-family:'DM Mono',monospace;}
+.txt{flex:1;}
+.txt strong{color:var(--text-primary);font-weight:500;}
+
+/* BADGES */
+.badge{display:inline-block;font-size:10px;font-weight:500;padding:1px 7px;border-radius:999px;margin-left:5px;vertical-align:middle;}
+.badge-green{background:rgba(45,212,191,0.1);color:var(--brand);border:0.5px solid rgba(45,212,191,0.25);}
+.badge-blue{background:rgba(96,165,250,0.1);color:var(--blue);border:0.5px solid rgba(96,165,250,0.25);}
+.badge-yellow{background:rgba(251,191,36,0.1);color:var(--yellow);border:0.5px solid rgba(251,191,36,0.25);}
+.badge-red{background:rgba(248,113,113,0.1);color:var(--red);border:0.5px solid rgba(248,113,113,0.25);}
+.badge-purple{background:rgba(167,139,250,0.1);color:var(--purple);border:0.5px solid rgba(167,139,250,0.25);}
+
+/* SUB LABEL */
+.sub-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--brand);margin:16px 0 8px;}
+
+/* DIVIDER */
+.divider{height:0.5px;background:var(--border);margin:1.5rem 0;}
+
+/* KPI TABLE */
+.kpi-table{width:100%;border-collapse:collapse;}
+.kpi-table th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-tertiary);padding:8px 12px;text-align:left;border-bottom:0.5px solid var(--border);background:var(--bg-card2);}
+.kpi-table td{font-size:13px;color:var(--text-secondary);padding:9px 12px;border-bottom:0.5px solid var(--border);}
+.kpi-table tr:last-child td{border-bottom:none;}
+.kpi-table td:first-child{color:var(--text-primary);font-weight:600;}
+.kpi-table td:nth-child(2){font-family:'DM Mono',monospace;color:var(--brand);font-weight:500;}
+
+/* GRANT TABLE */
+.grant-table{width:100%;border-collapse:collapse;}
+.grant-table th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-tertiary);padding:8px 12px;text-align:left;border-bottom:0.5px solid var(--border);background:var(--bg-card2);}
+.grant-table td{font-size:12.5px;color:var(--text-secondary);padding:9px 12px;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.5;}
+.grant-table tr:last-child td{border-bottom:none;}
+.grant-table td:first-child{color:var(--text-primary);font-weight:500;}
+.grant-table td:nth-child(2){font-family:'DM Mono',monospace;color:var(--brand);white-space:nowrap;}
+.grant-table td:nth-child(3){font-family:'DM Mono',monospace;color:var(--text-tertiary);}
+.grant-total{background:var(--brand-dim);}
+.grant-total td{color:var(--brand)!important;font-weight:700!important;border-top:0.5px solid var(--brand-border)!important;}
+
+/* CONTENT CALENDAR */
+.cal-day{display:grid;grid-template-columns:52px 1fr;gap:8px;padding:7px 0;border-bottom:0.5px solid var(--border);font-size:12.5px;align-items:baseline;}
+.cal-day:last-child{border-bottom:none;}
+.cal-d{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-tertiary);}
+.cal-v{color:var(--text-secondary);line-height:1.5;}
+.cal-v strong{color:var(--text-primary);}
+
+/* NOTE BOX */
+.note-box{background:rgba(251,191,36,0.04);border:0.5px solid rgba(251,191,36,0.2);border-radius:var(--radius-md);padding:11px 15px;margin-top:12px;}
+.note-box p{font-size:12px;color:var(--text-secondary);line-height:1.65;}
+.note-box p strong{color:var(--text-primary);}
+.note-box-teal{background:rgba(45,212,191,0.04);border:0.5px solid rgba(45,212,191,0.2);border-radius:var(--radius-md);padding:10px 14px;margin-top:10px;}
+.note-box-teal p{font-size:12px;color:var(--text-secondary);line-height:1.65;}
+.note-box-teal p strong{color:var(--text-primary);}
+
+/* PRODUCT SPEC STYLES */
+.timeline-wrap{margin-bottom:2rem;}
+.timeline-bar{display:grid;grid-template-columns:1fr 1fr;border:0.5px solid var(--border);border-radius:var(--radius-md);overflow:hidden;}
+.tl-seg{padding:14px 18px;background:var(--bg-card2);}
+.tl-seg:first-child{border-right:0.5px solid var(--border);background:rgba(45,212,191,0.05);}
+.tl-dates{font-size:11px;color:var(--text-tertiary);margin-bottom:5px;font-family:'DM Mono',monospace;}
+.tl-name{font-size:13px;font-weight:500;display:flex;align-items:center;gap:7px;}
+.tl-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+
+/* MODAL / CTA MOCK */
+.cta-mock{background:var(--bg-card2);border-radius:8px;padding:1.125rem;display:flex;flex-direction:column;gap:.65rem;border:0.5px solid var(--border);}
+.cta-top{display:flex;align-items:center;gap:.5rem;font-size:11px;font-weight:500;color:var(--text-secondary);}
+.cta-dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;}
+.cta-headline{font-size:14px;font-weight:500;color:var(--text-primary);}
+.cta-sub{font-size:12px;color:var(--text-secondary);line-height:1.6;}
+.cta-btn{display:inline-flex;align-items:center;gap:6px;background:var(--brand);color:#000;font-size:12px;font-weight:600;padding:7px 14px;border-radius:6px;width:fit-content;}
+.cta-skip{font-size:11px;color:var(--text-tertiary);}
+.modal-wrap{background:rgba(0,0,0,0.5);border-radius:8px;padding:2rem;display:flex;align-items:center;justify-content:center;min-height:260px;}
+.modal{background:var(--bg-card);border:0.5px solid var(--border-mid);border-radius:10px;padding:1.25rem;display:flex;flex-direction:column;gap:.75rem;max-width:280px;width:100%;}
+.modal-title{font-size:14px;font-weight:500;color:var(--text-primary);}
+.modal-body{font-size:12px;color:var(--text-secondary);line-height:1.6;}
+.modal-loss{font-size:12px;background:rgba(248,113,113,0.08);color:var(--red);border-radius:6px;padding:.5rem .75rem;line-height:1.8;border:0.5px solid rgba(248,113,113,0.2);}
+.btn-row{display:flex;gap:.5rem;margin-top:.25rem;}
+.btn-cancel{flex:1;padding:7px;font-size:12px;font-weight:500;border:0.5px solid var(--border-mid);border-radius:6px;background:transparent;color:var(--text-primary);text-align:center;}
+.btn-confirm{flex:1;padding:7px;font-size:12px;font-weight:500;border-radius:6px;background:#A32D2D;color:#FCEBEB;text-align:center;border:none;}
+
+/* PNL SHARE MOCK */
+.pnl-card{background:linear-gradient(135deg,rgba(45,212,191,0.08) 0%,rgba(45,212,191,0.03) 100%);border:0.5px solid var(--brand-border);border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-top:10px;}
+.pnl-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.pnl-market{font-size:12px;color:var(--text-secondary);}
+.pnl-result{font-size:22px;font-weight:700;color:var(--brand);}
+.pnl-detail{font-size:11px;color:var(--text-tertiary);font-family:'DM Mono',monospace;margin-bottom:12px;}
+.pnl-share-btn{display:inline-flex;align-items:center;gap:6px;background:var(--brand);color:#000;font-size:11px;font-weight:700;padding:6px 12px;border-radius:6px;}
+
+/* TABLE IN PRODUCT */
+.prod-table{width:100%;border-collapse:collapse;}
+.prod-table th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-tertiary);padding:7px 10px;text-align:left;border-bottom:0.5px solid var(--border);background:var(--bg-card2);}
+.prod-table td{font-size:12.5px;color:var(--text-secondary);padding:8px 10px;border-bottom:0.5px solid var(--border);line-height:1.5;}
+.prod-table tr:last-child td{border-bottom:none;}
+.pts{font-weight:600;color:var(--brand);font-family:'DM Mono',monospace;}
+.note-info{font-size:12px;line-height:1.6;padding:.5rem .75rem;background:rgba(45,212,191,0.06);border-left:2px solid var(--brand-border);color:var(--brand);border-radius:0;margin-top:8px;}
+.note-warn{font-size:12px;line-height:1.6;padding:.5rem .75rem;background:rgba(251,191,36,0.07);border-left:2px solid rgba(251,191,36,0.3);color:var(--yellow);border-radius:0;margin-top:8px;}
+.note-danger{font-size:12px;line-height:1.6;padding:.5rem .75rem;background:rgba(248,113,113,0.07);border-left:2px solid rgba(248,113,113,0.3);color:var(--red);border-radius:0;margin-top:8px;}
+.note-plain{font-size:12px;color:var(--text-secondary);line-height:1.6;padding:.45rem .7rem;background:var(--bg-card2);border-radius:0;border-left:2px solid var(--border-mid);margin-top:8px;}
+.section-inner-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-tertiary);margin:14px 0 6px;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="14 18 710 264" width="80" height="32">
+      <g fill="#2dd4bf">
+        <g transform="translate(0.349824, 212.116638)"><path d="M 87.28125 -168.3125 C 108.4375 -168.3125 125.828125 -164.019531 139.453125 -155.4375 C 153.078125 -146.863281 160.050781 -134.160156 160.375 -117.328125 L 160.375 -114.453125 L 110.59375 -114.453125 L 110.59375 -115.40625 C 110.59375 -120.21875 108.828125 -124.222656 105.296875 -127.421875 C 101.773438 -130.628906 96.410156 -132.234375 89.203125 -132.234375 C 82.148438 -132.234375 76.738281 -131.191406 72.96875 -129.109375 C 69.207031 -127.023438 67.328125 -124.460938 67.328125 -121.421875 C 67.328125 -117.085938 69.890625 -113.878906 75.015625 -111.796875 C 80.140625 -109.710938 88.394531 -107.550781 99.78125 -105.3125 C 113.082031 -102.582031 124.019531 -99.734375 132.59375 -96.765625 C 141.175781 -93.804688 148.671875 -88.957031 155.078125 -82.21875 C 161.492188 -75.488281 164.78125 -66.351562 164.9375 -54.8125 C 164.9375 -35.257812 158.320312 -20.753906 145.09375 -11.296875 C 131.875 -1.835938 114.207031 2.890625 92.09375 2.890625 C 66.28125 2.890625 46.203125 -1.4375 31.859375 -10.09375 C 17.515625 -18.75 10.34375 -34.054688 10.34375 -56.015625 L 60.59375 -56.015625 C 60.59375 -47.679688 62.753906 -42.113281 67.078125 -39.3125 C 71.410156 -36.507812 78.144531 -35.109375 87.28125 -35.109375 C 94.007812 -35.109375 99.578125 -35.828125 103.984375 -37.265625 C 108.390625 -38.710938 110.59375 -41.675781 110.59375 -46.15625 C 110.59375 -50.164062 108.148438 -53.171875 103.265625 -55.171875 C 98.378906 -57.179688 90.40625 -59.304688 79.34375 -61.546875 C 65.875 -64.429688 54.734375 -67.4375 45.921875 -70.5625 C 37.109375 -73.6875 29.414062 -78.851562 22.84375 -86.0625 C 16.269531 -93.28125 12.984375 -103.0625 12.984375 -115.40625 C 12.984375 -133.519531 19.992188 -146.863281 34.015625 -155.4375 C 48.046875 -164.019531 65.800781 -168.3125 87.28125 -168.3125 Z"/></g>
+        <g transform="translate(173.941675, 212.116638)"><path d="M 120.453125 0 L 67.328125 0 L 67.328125 -64.203125 L 1.6875 -165.421875 L 62.75 -165.421875 L 94.484375 -110.359375 L 95.453125 -110.359375 L 127.1875 -165.421875 L 185.140625 -165.421875 Z"/></g>
+        <g transform="translate(360.997723, 212.116638)"><path d="M 87.515625 -39.671875 L 166.140625 -39.671875 L 166.140625 0 L 5.765625 0 L 5.765625 -17.078125 L 82.46875 -125.75 L 11.546875 -125.75 L 11.546875 -165.421875 L 164.21875 -165.421875 L 164.21875 -148.34375 Z"/></g>
+        <g transform="translate(534.589605, 212.116638)"><path d="M 120.453125 0 L 67.328125 0 L 67.328125 -64.203125 L 1.6875 -165.421875 L 62.75 -165.421875 L 94.484375 -110.359375 L 95.453125 -110.359375 L 127.1875 -165.421875 L 185.140625 -165.421875 Z"/></g>
+      </g>
+    </svg>
+    <div class="hd"></div>
+    <div>
+      <div style="font-size:15px;font-weight:600;">Growth &amp; Product Plan</div>
+      <div style="font-size:11px;color:var(--text-tertiary);margin-top:2px;font-family:'DM Mono',monospace;">Apr 13 – May 13, 2025 · Month 1</div>
+    </div>
+    <div style="margin-left:auto;text-align:right;">
+      <span class="htag">Stellar Ecosystem</span>
+      <div class="hdate">$5,000 Grant · 30-day sprint</div>
+    </div>
+  </div>
+
+  <!-- TOP PLAN SWITCHER -->
+  <div class="plan-tabs">
+    <div class="ptab active" onclick="switchPlan(0)">
+      <div class="ptab-icon">📈</div>
+      <div class="ptab-label">Marketing Growth Plan</div>
+      <div class="ptab-sub">KPI · Communities · X · Grant</div>
+    </div>
+    <div class="ptab" onclick="switchPlan(1)">
+      <div class="ptab-icon">🛠</div>
+      <div class="ptab-label">Product Growth Plan</div>
+      <div class="ptab-sub">Waitlist → Beta · Missions · PnL Share</div>
+    </div>
+  </div>
+
+  <!-- ══════════════ MARKETING GROWTH PLAN ══════════════ -->
+  <div class="plan-panel active" id="plan-marketing">
+
+    <div class="sec-label">Select Month</div>
+    <div class="month-tabs">
+      <div class="mtab m1 active" onclick="switchMonth(0)">
+        <div class="mtab-num">Month 1</div>
+        <div class="mtab-label">Seed &amp; Activate</div>
+        <div class="mtab-date">Apr 13 – May 13</div>
+      </div>
+      <div class="mtab m2" onclick="switchMonth(1)">
+        <div class="mtab-num">Month 2</div>
+        <div class="mtab-label">Expand &amp; Volume</div>
+        <div class="mtab-date">May 13 – Jun 13</div>
+      </div>
+      <div class="mtab m3" onclick="switchMonth(2)">
+        <div class="mtab-num">Month 3</div>
+        <div class="mtab-label">Scale &amp; Retain</div>
+        <div class="mtab-date">Jun 13 – Jul 13</div>
+      </div>
+    </div>
+
+    <!-- MONTH 1 -->
+    <div class="month-panel active" id="m0">
+      <div class="phase-header-bar">
+        <div class="ph-ind" style="background:var(--brand);"></div>
+        <div>
+          <div class="ph-title">Month 1 — Seed &amp; Activate</div>
+          <div class="ph-dates">Apr 13 – May 13 · 30 days · Waitlist → Beta → First trades · 2× points window (14 days) · 60% cashback</div>
+        </div>
+      </div>
+      <div class="sec-heading"><div class="sec-num">1</div><div><div class="sec-title">KPI Targets</div><div class="sec-sub">Aligned with $5,000 grant · 30-day sprint</div></div></div>
+      <div class="card" style="margin-bottom:10px;">
+        <table class="kpi-table">
+          <thead><tr><th>Metric</th><th>Target</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Waitlist Wallets</td><td>100–200</td><td>Gate: wallet connect required. No wallet = no waitlist.</td></tr>
+            <tr><td>Activated Users (deposit + trade)</td><td>60–100</td><td>≥ $5 deposit + ≥ $5 trade to unlock Beta access</td></tr>
+            <tr><td>Active Users</td><td>20–40</td><td>Repeat engagement, ≥ 2 trades/week</td></tr>
+            <tr><td>Transactions</td><td>180–500</td><td>~3–5 tx per active user</td></tr>
+            <tr><td>Trading Volume</td><td>$300–$1k</td><td>Incentive-driven — 60% cashback + 2× points first 14 days</td></tr>
+            <tr><td>TVL (USDC on Stellar)</td><td>$300–$500</td><td>Avg $5 per user. Inactivity penalty keeps funds on-platform.</td></tr>
+            <tr><td>PnL Share on X</td><td>20+ posts</td><td>Target: each winning trade → 1-click share with referral link</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sec-heading"><div class="sec-num">2</div><div><div class="sec-title">Weekly Schedule</div><div class="sec-sub">4-week execution plan</div></div></div>
+      <div class="week-block wk1"><div class="week-header"><span class="wnum">WEEK 1</span><div class="week-title">Waitlist Launch + X Seeding</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-stellar">Stellar</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Syzy is live on waitlist"</strong> thread on X — prediction market on Stellar, wallet required, scarcity messaging</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Publish <strong>"Why prediction markets on Stellar?"</strong> — educational thread, first content piece, drive follows</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div><strong>Community #1 onboard</strong> — Stellar-focused TG group (200–500 active members). Budget: $200. Pinned announcement + 7-day pin</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"How to join Syzy beta"</strong> — step-by-step: connect wallet → deposit ≥ $5 → trade ≥ $5 → access unlocked</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Drop in StellarDevs, Stellar Discord — beta announcement once in relevant channels, no spam</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Reply engagement — 5–10 Stellar/prediction market tweets daily, add value organically</div></div>
+      </div></div>
+      <div class="week-block wk2"><div class="week-header"><span class="wnum">WEEK 2</span><div class="week-title">Beta Opens · 2× Points + 60% Cashback LIVE</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Incentive</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div><strong>"Beta is open"</strong> announcement — 2× points + 60% cashback window starts. Create urgency: limited to 14 days</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>first real on-chain trade screenshot</strong> — "User #1 just traded on Syzy" — proof of life is most powerful content</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Syzy vs CEX prediction: where you actually keep your winnings"</strong> — comparison visual, drives curiosity</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div><strong>Community #2 onboard</strong> — Stellar Discord server or second TG group. Budget: $200. Pinned post + members-only referral promo code</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Push <strong>referral mechanics</strong> on X — "Trade ≥ $10/week → earn 1 access key → invite friends → earn from their fees"</div></div>
+      </div></div>
+      <div class="week-block wk3"><div class="week-header"><span class="wnum">WEEK 3</span><div class="week-title">PnL Share Loop + Leaderboard</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Social Proof</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Push <strong>PnL share mechanic</strong> hard — "Won a trade? Share your PnL card on X → get exposure → earn bonus points"</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>leaderboard update</strong> — "Top 5 traders this week" on X, tag wallets (shortened), drives competitive behavior</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"I predicted X and won Y USDC on Syzy"</strong> user story format — pre-fill tweet template for easy sharing</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>DM 5 Stellar ecosystem builders for <strong>zero-cost mutual mention</strong> — share each other's project in own community</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div><strong>"Shielded vs public trade"</strong> explainer thread — drives curiosity about privacy feature, differentiates Syzy</div></div>
+      </div></div>
+      <div class="week-block wk4"><div class="week-header"><span class="wnum">WEEK 4</span><div class="week-title">FOMO Countdown · Final 2× Push</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-red">FOMO</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div><strong>"3 days left for 2× points"</strong> countdown posts — one post per day, create urgency before incentive window closes May 4</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Month 1 stats"</strong> — honest numbers: wallets, volume, transactions, top markets. Transparency builds trust.</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>referral leaderboard</strong> — "Top invitors this month" — multi-tier referral rewards made visible</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>DM waitlist users who haven't activated — short reminder + 2× window deadline nudge</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Submit Syzy to <strong>Stellar ecosystem map</strong> — credibility signal, discoverability for new users</div></div>
+      </div></div>
+
+      <div class="sec-heading"><div class="sec-num">3</div><div><div class="sec-title">Content Calendar</div><div class="sec-sub">X is primary — community is for Q&amp;A and distribution</div></div></div>
+      <div class="grid2">
+        <div class="card"><div class="card-label"><span class="dot g"></span>X (Twitter) — 3–4 posts/week</div>
+          <div class="cal-day"><div class="cal-d">Mon</div><div class="cal-v"><strong>Educational thread</strong> — prediction markets, Stellar, how Syzy works</div></div>
+          <div class="cal-day"><div class="cal-d">Wed</div><div class="cal-v"><strong>Product proof</strong> — on-chain tx, PnL share screenshot, real trade results</div></div>
+          <div class="cal-day"><div class="cal-d">Fri</div><div class="cal-v"><strong>Community/referral</strong> — leaderboard, access key CTA, position share</div></div>
+          <div class="cal-day"><div class="cal-d">Daily</div><div class="cal-v"><strong>Reply engagement</strong> — 5–10 Stellar/prediction tweets, add value organically</div></div>
+        </div>
+        <div class="card"><div class="card-label"><span class="dot b"></span>Community (TG/Discord) — distribution</div>
+          <div class="cal-day"><div class="cal-d">Weekly</div><div class="cal-v"><strong>Market snapshot</strong> — active markets, top positions, leaderboard update</div></div>
+          <div class="cal-day"><div class="cal-d">On event</div><div class="cal-v"><strong>Milestone posts</strong> — only when something real happens (new market, big win)</div></div>
+          <div class="cal-day"><div class="cal-d">Always</div><div class="cal-v"><strong>Respond to questions</strong> — within 4h, community is for Q&amp;A not broadcast</div></div>
+        </div>
+      </div>
+
+      <div class="sec-heading"><div class="sec-num">4</div><div><div class="sec-title">Community Budget</div><div class="sec-sub">$200/community · 2 communities this month</div></div></div>
+      <div class="grid2">
+        <div class="card"><div class="card-label"><span class="dot g"></span>Community #1 · $200 · Wk 1</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">Stellar-focused TG group (200–500 active members)</span></li>
+          <li><span class="num">→</span><span class="txt">Pinned announcement post · 7-day pin duration</span></li>
+          <li><span class="num">→</span><span class="txt">Verify member activity before paying 50% balance</span></li>
+        </ul></div>
+        <div class="card"><div class="card-label"><span class="dot g"></span>Community #2 · $200 · Wk 2</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">Stellar Discord server or second TG group</span></li>
+          <li><span class="num">→</span><span class="txt">Pinned post + members-only referral promo code</span></li>
+          <li><span class="num">→</span><span class="txt">Payment: 50% upfront, 50% on delivery</span></li>
+        </ul></div>
+      </div>
+
+      <div class="sec-heading"><div class="sec-num">5</div><div><div class="sec-title">Grant Plan — $5,000</div><div class="sec-sub">Focus: on-chain trading activity · No salaries allocated</div></div></div>
+      <div class="card"><table class="grant-table">
+        <thead><tr><th>Category</th><th>Budget</th><th>%</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Backend &amp; Smart Contract Development</td><td>$1,200</td><td>24%</td><td>Market creation/resolution logic, on-chain integration, Soroban contracts, routing for USDC/XLM</td></tr>
+          <tr><td>Liquidity Pool (Market Bootstrapping)</td><td>$800</td><td>16%</td><td>Seed initial liquidity for YES/NO markets to enable trading and payouts from day one</td></tr>
+          <tr><td>Trading Incentives</td><td>$500</td><td>10%</td><td>60% cashback pool (14 days), leaderboard prize pool, mission reward pool for top traders</td></tr>
+          <tr><td>Infrastructure</td><td>$700</td><td>14%</td><td>RPC access, indexers, cloud hosting, testnet/mainnet deployment</td></tr>
+          <tr><td>Frontend</td><td>$500</td><td>10%</td><td>Hosting, domain, PnL share UI, position cards, onboarding flow</td></tr>
+          <tr><td>Security &amp; Monitoring</td><td>$500</td><td>10%</td><td>Smart contract review, transaction monitoring, on-chain analytics dashboards</td></tr>
+          <tr><td>Distribution &amp; Growth Engine</td><td>$400</td><td>8%</td><td>KOL seeding, access key distribution, community buys ($200×2), X growth loops</td></tr>
+          <tr><td>Tools &amp; Workspace</td><td>$400</td><td>8%</td><td>AI tools, dev tools, CI/CD, design tools</td></tr>
+          <tr class="grant-total"><td>Total</td><td>$5,000</td><td>100%</td><td>No grant funds allocated to salaries — all used to drive on-chain trading activity</td></tr>
+        </tbody>
+      </table></div>
+    </div><!-- /m0 -->
+
+    <!-- MONTH 2 -->
+    <div class="month-panel" id="m1">
+      <div class="phase-header-bar">
+        <div class="ph-ind" style="background:var(--yellow);"></div>
+        <div>
+          <div class="ph-title">Month 2 — Expand &amp; Volume</div>
+          <div class="ph-dates">May 13 – Jun 13 · 30 days · Open access · Protocol collabs · Volume push · Position sharing</div>
+        </div>
+      </div>
+      <div class="sec-heading"><div class="sec-num">1</div><div><div class="sec-title">KPI Targets</div><div class="sec-sub">Escalated targets — build on Month 1 base</div></div></div>
+      <div class="card" style="margin-bottom:10px;"><table class="kpi-table">
+        <thead><tr><th>Metric</th><th>Target</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Active Users</td><td>80–120</td><td>Returning + new users via referral loop</td></tr>
+          <tr><td>Transactions</td><td>300–600</td><td>~3–5 tx per active user</td></tr>
+          <tr><td>Volume</td><td>$1,500–$3k</td><td>Access key referral loop driving volume</td></tr>
+          <tr><td>TVL</td><td>$600–$1k</td><td>Stake rebate tiers driving capital retention</td></tr>
+          <tr><td>PnL Shares on X</td><td>50+</td><td>Each share = referral link embedded → organic loop</td></tr>
+          <tr><td>New Markets Created</td><td>10–20</td><td>Each market creator pays 10 USDC fee + earns 1,000 pts</td></tr>
+        </tbody>
+      </table></div>
+      <div class="sec-heading"><div class="sec-num">2</div><div><div class="sec-title">Weekly Schedule</div></div></div>
+      <div class="week-block wk1"><div class="week-header"><span class="wnum">WEEK 1</span><div class="week-title">Open Access + Month 1 Results</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Launch</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Publish <strong>"Month 1 results"</strong> post — honest numbers (wallets, volume, trades, top markets) — transparency builds trust</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div><strong>Community #3 onboard</strong> — broader DeFi/prediction market TG. Budget: $200. Pinned post + intro</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>referral leaderboard</strong> on X — top 5 wallets by invites, gamification goes public</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Reach out to <strong>Stellar ecosystem protocols</strong> on X — propose co-branded prediction market (e.g. "Will XLM hit $0.30?") as collab</div></div>
+      </div></div>
+      <div class="week-block wk2"><div class="week-header"><span class="wnum">WEEK 2</span><div class="week-title">Position Share Push + PnL Virality</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Social Loop</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Launch <strong>"Share your position"</strong> campaign — push in-app share button, pre-filled tweet: "I'm trading [YES/NO] on [market] via @SyzyApp — on Stellar"</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"first user resolves a market"</strong> — screenshot with PnL card, real proof of payout working</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Thread: <strong>"How Syzy PnL sharing works"</strong> — each share = referral link = passive earnings for sharer</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Weekly TVL update on X — show growth, even small numbers demonstrate momentum</div></div>
+      </div></div>
+      <div class="week-block wk3"><div class="week-header"><span class="wnum">WEEK 3</span><div class="week-title">Create Market Feature Push</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Product</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Create your own prediction market on Syzy"</strong> — explain the 60 USDC mechanics, 1,000 pts reward per market</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Show <strong>example user-created market</strong> — real market, real question, real resolution, drives FOMO to create</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>DM Stellar ecosystem newsletter writers — pitch Syzy for editorial mention (free, no pay-to-play)</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>stake tier explainer</strong> — "Stake ≥$100 → 10% rebate. Stake ≥$500 → 50% rebate. Never withdraw." drives TVL retention</div></div>
+      </div></div>
+      <div class="week-block wk4"><div class="week-header"><span class="wnum">WEEK 4</span><div class="week-title">Retention + Ecosystem Listing</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Retention</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Week 3 leaderboard"</strong> — top earners, top PnL sharers, most markets created</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>DM inactive users who haven't traded in 48h — inactivity penalty reminder: "Your rewards reset if balance drops below $5 for 3 days"</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Submit Syzy to <strong>Stellar ecosystem map &amp; aggregator sites</strong> — TVL visibility = credibility</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Month 2 preview"</strong> — what's coming, new markets planned, growing leaderboard</div></div>
+      </div></div>
+    </div><!-- /m1 -->
+
+    <!-- MONTH 3 -->
+    <div class="month-panel" id="m2">
+      <div class="phase-header-bar">
+        <div class="ph-ind" style="background:var(--purple);"></div>
+        <div>
+          <div class="ph-title">Month 3 — Scale &amp; Retain</div>
+          <div class="ph-dates">Jun 13 – Jul 13 · 30 days · Full open access · Deep ecosystem · Referral amplification</div>
+        </div>
+      </div>
+      <div class="sec-heading"><div class="sec-num">1</div><div><div class="sec-title">KPI Targets</div></div></div>
+      <div class="card" style="margin-bottom:10px;"><table class="kpi-table">
+        <thead><tr><th>Metric</th><th>Target</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Active Users</td><td>120–200</td><td>Referral-driven growth, word of mouth from PnL shares</td></tr>
+          <tr><td>Transactions</td><td>500–1,000</td><td>Multi-market requirement + daily missions driving frequency</td></tr>
+          <tr><td>Volume</td><td>$3k–$6k</td><td>Stake tiers + FOMO from cumulative volume missions (up to 4,200 pts at $1k)</td></tr>
+          <tr><td>TVL</td><td>$1k–$2k</td><td>Compound effect of staking rebates + inactivity penalty</td></tr>
+          <tr><td>Referral Chains</td><td>2-layer active</td><td>Layer 2 earner mechanics go public — drive multi-tier growth</td></tr>
+        </tbody>
+      </table></div>
+      <div class="sec-heading"><div class="sec-num">2</div><div><div class="sec-title">Weekly Schedule</div></div></div>
+      <div class="week-block wk1"><div class="week-header"><span class="wnum">WEEK 1</span><div class="week-title">Month 2 Results + Referral Amplification</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Referral</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Publish <strong>"Month 2 numbers"</strong> — transparency post, show volume growth, PnL shares, market count</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Layer 2 referral explained"</strong> — "Your referral trades → you earn. Their referrals trade → you earn too." Drives aggressive invite behavior</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div><strong>Community #4 onboard</strong> — broader crypto/DeFi audience. Budget: $200. Pinned post + referral bonus for first 50 sign-ups</div></div>
+      </div></div>
+      <div class="week-block wk2"><div class="week-header"><span class="wnum">WEEK 2</span><div class="week-title">Position Share + Volume Milestone Push</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Milestones</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Top 10 all-time positions on Syzy"</strong> — real PnL cards, real wallets, drives aspiration</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Push <strong>Volume V milestone</strong> ($1k cumulative = 4,200 pts = 8,400 pts with 2×) — thread showing points math, creates FOMO</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Reply to Stellar ecosystem projects' X posts — consistent, genuine engagement builds relationships</div></div>
+      </div></div>
+      <div class="week-block wk3"><div class="week-header"><span class="wnum">WEEK 3</span><div class="week-title">Ecosystem Integration + Press</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-stellar">Ecosystem</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Pitch Syzy to <strong>2–3 crypto newsletters</strong> covering Stellar ecosystem — editorial coverage, not paid</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Syzy on-chain stats"</strong> — total volume, total markets, total traders. Verifiable on-chain proof for grant reporting</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Co-branded market with <strong>a Stellar protocol</strong> — "Will [Protocol X] TVL hit $Y by [date]?" — mutual promotion</div></div>
+      </div></div>
+      <div class="week-block wk4"><div class="week-header"><span class="wnum">WEEK 4</span><div class="week-title">Retention &amp; Grant Reporting Prep</div><div class="week-tags"><span class="tag tag-content">Retention</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"3-month recap"</strong> — total on-chain activity, verifiable metrics, ecosystem impact story</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>DM power users (top traders/referrers) for <strong>testimonials</strong> — "What's your biggest win on Syzy?" content series</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Prepare <strong>grant report deliverables</strong> — on-chain tx evidence, wallet count, TVL screenshots, volume proof</div></div>
+      </div></div>
+    </div><!-- /m2 -->
+
+  </div><!-- /plan-marketing -->
+
+  <!-- ══════════════ PRODUCT GROWTH PLAN ══════════════ -->
+  <div class="plan-panel" id="plan-product">
+
+    <div class="sec-label">Select Phase</div>
+    <div class="phase-tabs">
+      <div class="phtab ph1 active" onclick="switchPhase(0)">
+        <div class="phtab-num">Phase 1</div>
+        <div class="phtab-label">Waitlist</div>
+        <div class="phtab-date">Apr 13 → Apr 20</div>
+      </div>
+      <div class="phtab ph2" onclick="switchPhase(1)">
+        <div class="phtab-num">Phase 2</div>
+        <div class="phtab-label">Beta Access</div>
+        <div class="phtab-date">Apr 20 → May 13</div>
+      </div>
+      <div class="phtab ph3" onclick="switchPhase(2)">
+        <div class="phtab-num">Phase 3</div>
+        <div class="phtab-label">Growth Loop</div>
+        <div class="phtab-date">May 13 → Jul 13</div>
+      </div>
+    </div>
+
+    <!-- PHASE 1: WAITLIST -->
+    <div class="phase-panel active" id="ph0">
+      <div class="phase-header-bar">
+        <div class="ph-ind" style="background:var(--brand);"></div>
+        <div>
+          <div class="ph-title">Phase 1 — Waitlist</div>
+          <div class="ph-dates">Apr 13 → Apr 20 · 7 days · Access gated by wallet connection</div>
+        </div>
+      </div>
+      <div class="sub-label">1.1 · Access gate</div>
+      <div class="card" style="margin-bottom:10px;"><ul class="list">
+        <li><span class="num">→</span><span class="txt"><strong>Wallet connection required.</strong> No wallet = no waitlist. Freighter or compatible Stellar wallet.</span></li>
+        <li><span class="num">→</span><span class="txt"><strong>Queue mechanic.</strong> Share on X to move up the queue → verify tweet → rank boost. Drives early organic spread.</span></li>
+        <li><span class="num">→</span><span class="txt">Scarcity messaging: <strong>"Limited beta spots — secure yours now."</strong> Waitlist page shows live counter.</span></li>
+      </ul></div>
+      <div class="sub-label">1.2 · Timeline bar</div>
+      <div class="timeline-wrap">
+        <div class="timeline-bar">
+          <div class="tl-seg">
+            <div class="tl-dates">Apr 13 → Apr 20</div>
+            <div class="tl-name"><div class="tl-dot" style="background:var(--text-tertiary);"></div>Waitlist — wallet connection only</div>
+          </div>
+          <div class="tl-seg" style="background:rgba(45,212,191,0.05);">
+            <div class="tl-dates">Apr 20 → May 13</div>
+            <div class="tl-name"><div class="tl-dot" style="background:var(--brand);"></div>Beta — deposit + trade to unlock · 2× points + 60% cashback (first 14 days)</div>
+          </div>
+        </div>
+        <div class="note-info" style="margin-top:8px;">2× points + 60% cashback active Apr 20 → May 4 (14 days). Applies to all points including Post-Trade CTA. Beta continues to May 13.</div>
+      </div>
+    </div><!-- /ph0 -->
+
+    <!-- PHASE 2: BETA ACCESS -->
+    <div class="phase-panel" id="ph1">
+      <div class="phase-header-bar">
+        <div class="ph-ind" style="background:var(--yellow);"></div>
+        <div>
+          <div class="ph-title">Phase 2 — Beta Access</div>
+          <div class="ph-dates">Apr 20 → May 13 · 23 days · Deposit + Trade to unlock · Incentive window first 14 days</div>
+        </div>
+      </div>
+
+      <div class="sub-label">2.1 · Beta access unlock</div>
+      <div class="grid2">
+        <div class="card"><div class="card-label"><span class="dot g"></span>Step 1 — Access Activation</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">User must <strong>deposit ≥ $5 USDC</strong> on Stellar to activate access</span></li>
+          <li><span class="num">→</span><span class="txt">No deposit = stuck on waitlist, no trading allowed</span></li>
+        </ul></div>
+        <div class="card"><div class="card-label"><span class="dot y"></span>Step 2 — Access Key</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">User must <strong>trade ≥ $5 volume</strong> to unlock full beta access</span></li>
+          <li><span class="num">→</span><span class="txt">Weekly trade volume &gt; $10 → unlock 1 access key to invite others</span></li>
+        </ul></div>
+      </div>
+
+      <div class="sub-label">2.2 · Trading mechanics</div>
+      <div class="grid2">
+        <div class="card"><div class="card-label"><span class="dot g"></span>Supported currencies</div><ul class="list">
+          <li><span class="num">→</span><span class="txt"><strong>USDC and XLM.</strong> User can trade in both.</span></li>
+          <li><span class="num">→</span><span class="txt"><strong>Auto route</strong> — system routes automatically; user doesn't need to swap before trading</span></li>
+        </ul></div>
+        <div class="card"><div class="card-label"><span class="dot b"></span>Trading fees</div>
+          <table class="prod-table">
+            <tr><th>Trade type</th><th>Fee</th></tr>
+            <tr><td>Public trade</td><td class="pts">0.95%</td></tr>
+            <tr><td>Shielded trade</td><td class="pts">0.95% + 0.1% on volume</td></tr>
+          </table>
+          <div class="note-plain">Fee rebate applies on top of both fee types.</div>
+        </div>
+      </div>
+
+      <div class="sub-label">2.3 · Incentive windows</div>
+      <div class="card">
+        <table class="prod-table">
+          <tr><th>Period</th><th>Points</th><th>Fee Rebate</th></tr>
+          <tr><td>Apr 20 → May 4 <span style="font-size:10px;background:var(--brand-dim);color:var(--brand);border:0.5px solid var(--brand-border);padding:1px 6px;border-radius:999px;margin-left:4px;">first 14 days</span></td><td class="pts">2× all points</td><td>60% cashback</td></tr>
+          <tr><td>May 5 → May 13</td><td style="color:var(--text-tertiary);">1× base</td><td style="color:var(--text-tertiary);">0% (unless eligible)</td></tr>
+          <tr><td>Forever <span style="font-size:10px;background:var(--brand-dim);color:var(--brand);border:0.5px solid var(--brand-border);padding:1px 6px;border-radius:999px;margin-left:4px;">rebate eligible</span></td><td style="color:var(--text-tertiary);">—</td><td>20% rebate, permanent</td></tr>
+        </table>
+        <div class="note-info">Rebate eligibility: cumulative trade volume &gt; $100 in Beta. Once unlocked, 20% is permanent.</div>
+      </div>
+
+      <div class="sub-label">2.4 · Stake (XLM or USDC) — fee rebate tiers</div>
+      <div class="card">
+        <table class="prod-table">
+          <tr><th>Stake amount</th><th>Fee rebate</th><th>Notes</th></tr>
+          <tr><td>≥ $100</td><td class="pts">10%</td><td>Withdraw stake → lose tier immediately</td></tr>
+          <tr><td>≥ $300</td><td class="pts">30%</td><td>Stake rebate and 20% rebate-eligible: take the higher, not additive</td></tr>
+          <tr><td>≥ $500</td><td class="pts">50%</td><td>Highest tier — keep capital on-platform to maintain</td></tr>
+        </table>
+      </div>
+
+      <div class="sub-label">2.5 · Missions</div>
+      <div class="card">
+        <div class="note-warn">Points only unlock when cumulative trade volume &gt; $10. Below this threshold, missions complete but points are held — not yet credited.</div>
+        <div class="section-inner-label" style="margin-top:12px;">Daily missions (max 2 active per day · resets 00:00 UTC)</div>
+        <table class="prod-table">
+          <tr><th>Mission</th><th>Condition</th><th>Base pts</th><th>2× window</th></tr>
+          <tr><td>Login</td><td>Open app &amp; authenticate wallet</td><td class="pts">+10</td><td class="pts">+20</td></tr>
+          <tr><td>Daily trade</td><td>Trade &gt; $10 in a single day</td><td class="pts">+30</td><td class="pts">+60</td></tr>
+        </table>
+        <div class="section-inner-label" style="margin-top:12px;">Weekly missions</div>
+        <table class="prod-table">
+          <tr><th>Mission</th><th>Condition</th><th>Base pts</th><th>2× window</th></tr>
+          <tr><td>Weekly volume</td><td>Cumulative trade &gt; $50 in the week</td><td class="pts">+150</td><td class="pts">+300</td></tr>
+          <tr><td>Login streak</td><td>Login 7 consecutive days</td><td class="pts">+200</td><td class="pts">+400</td></tr>
+          <tr><td>Win a trade</td><td>Close 1 profitable trade, position &gt; $10</td><td class="pts">+100</td><td class="pts">+200</td></tr>
+          <tr><td>Win 3 trades</td><td>Close 3 profitable trades in the week, each position &gt; $10</td><td class="pts">+500</td><td class="pts">+1,000</td></tr>
+        </table>
+        <div class="section-inner-label" style="margin-top:12px;">Monthly — volume tiers (cumulative)</div>
+        <table class="prod-table">
+          <tr><th>Mission</th><th>Condition</th><th>Incremental pts</th><th>Total</th><th>2× total</th></tr>
+          <tr><td>Volume I</td><td>&gt; $100</td><td class="pts">+100</td><td style="color:var(--text-tertiary);">100</td><td class="pts">200</td></tr>
+          <tr><td>Volume II</td><td>&gt; $300</td><td class="pts">+400</td><td style="color:var(--text-tertiary);">500</td><td class="pts">1,000</td></tr>
+          <tr><td>Volume III</td><td>&gt; $500</td><td class="pts">+700</td><td style="color:var(--text-tertiary);">1,200</td><td class="pts">2,400</td></tr>
+          <tr><td>Volume IV</td><td>&gt; $700</td><td class="pts">+1,000</td><td style="color:var(--text-tertiary);">2,200</td><td class="pts">4,400</td></tr>
+          <tr><td>Volume V</td><td>&gt; $1,000</td><td class="pts">+2,000</td><td style="color:var(--text-tertiary);">4,200</td><td class="pts">8,400</td></tr>
+        </table>
+        <div class="note-plain">Tiers cumulative — reach $300 and receive both +100 and +400 (500 pts total). Trading $1,000 = 4,200 pts vs 10× $100 = 1,000 pts.</div>
+        <div class="section-inner-label" style="margin-top:12px;">One-time / per action</div>
+        <table class="prod-table">
+          <tr><th>Mission</th><th>Condition</th><th>Base pts</th><th>2× window</th></tr>
+          <tr><td>Create market</td><td>Create 1 market (requires 60 USDC). Repeatable — each valid market counted separately.</td><td class="pts">+1,000</td><td class="pts">+2,000</td></tr>
+        </table>
+        <div class="note-plain">Create market mission has no limit — each valid market submitted (60 USDC, pass validation) earns +1,000 pts.</div>
+      </div>
+
+      <div class="sub-label">2.6 · Create market mechanics</div>
+      <div class="card"><ul class="list">
+        <li><span class="num">→</span><span class="txt"><strong>Pool deposit</strong> — 50 USDC (liquidity pool for that market)</span></li>
+        <li><span class="num">→</span><span class="txt"><strong>Creation fee</strong> — 10 USDC (non-refundable)</span></li>
+        <li><span class="num">→</span><span class="txt" style="color:var(--brand);font-weight:600;">Total required: 60 USDC</span></li>
+      </ul>
+        <div class="note-danger" style="margin-top:8px;">⚠ If market cannot resolve (unclear question, missing info), 10 USDC fee is lost and 50 USDC pool may be locked. UI must block submit if balance &lt; 60 USDC.</div>
+      </div>
+
+      <div class="sub-label">2.7 · Post-Trade CTA — re-entry prompt</div>
+      <div class="card">
+        <ul class="list">
+          <li><span class="num">→</span><span class="txt"><strong>Trigger:</strong> appears after PnL screen, every 3 trades (trade 3, 6, 9…). Not shown on trades 1, 2, 4, 5.</span></li>
+          <li><span class="num">→</span><span class="txt"><strong>Framing:</strong> rare / lucky feel — user should feel this is a special opportunity, not a normal popup.</span></li>
+          <li><span class="num">→</span><span class="txt"><strong>Condition:</strong> reward only counts if user opens new position &gt; $10.</span></li>
+          <li><span class="num">→</span><span class="txt"><strong>Reward:</strong> +300 pts base. First 14 days: +600 pts (2×).</span></li>
+        </ul>
+        <div style="height:10px;"></div>
+        <div class="cta-mock">
+          <div class="cta-top"><div class="cta-dot"></div><span>Rare opportunity — only appears occasionally</span></div>
+          <div class="cta-headline">You're on a roll — bonus window open</div>
+          <div class="cta-sub">Enter the next market with a position &gt; $10 and earn <strong style="color:var(--brand);">+300 points</strong> instantly. This won't show every time.</div>
+          <div class="cta-btn">Enter next market → +300 pts</div>
+          <div class="cta-skip">Skip — I'll pass this time</div>
+        </div>
+      </div>
+
+      <div class="sub-label">2.8 · PnL Share — social loop</div>
+      <div class="card">
+        <ul class="list">
+          <li><span class="num">→</span><span class="txt">After each <strong>resolved winning position</strong>: show PnL card with "Share on X" button</span></li>
+          <li><span class="num">→</span><span class="txt">Pre-filled tweet: <strong>"I predicted [YES/NO] on [market] and won [X] USDC on @SyzyApp — on Stellar"</strong> + referral link embedded</span></li>
+          <li><span class="num">→</span><span class="txt">Each share = referral link → organic acquisition loop. Sharer earns from new user's fees.</span></li>
+          <li><span class="num">→</span><span class="txt">Show <strong>position card</strong> even for losing trades — "I was early on [market]" framing builds identity</span></li>
+        </ul>
+        <div class="pnl-card">
+          <div class="pnl-top">
+            <div class="pnl-market">Syzy · YES on "BTC &gt; $100k by Jul 2025"</div>
+          </div>
+          <div class="pnl-result">+$47.20 USDC</div>
+          <div class="pnl-detail">Position: $50 · Resolved: YES · Return: 94.4%</div>
+          <div class="pnl-share-btn">🐦 Share on X → earn referral rewards</div>
+        </div>
+      </div>
+
+      <div class="sub-label">2.9 · Referral structure</div>
+      <div class="card">
+        <ul class="list">
+          <li><span class="num">→</span><span class="txt"><strong>2-layer structure.</strong> Layer 1 earns % of referred user fees. Layer 2 earns % of L1 referrals' fees.</span></li>
+          <li><span class="num">→</span><span class="txt"><strong>Referral tier</strong> scales by number of qualified referrals. Qualified = referred user trades &gt; $10.</span></li>
+          <li><span class="num">→</span><span class="txt">Access key generated when weekly trade volume &gt; $10 — 1 key per user per week.</span></li>
+        </ul>
+      </div>
+
+      <div class="sub-label">2.10 · Inactivity penalty</div>
+      <div class="card">
+        <div class="note-danger">Balance &lt; $5 continuously for 3 days → reset everything: Tier, Points, Leaderboard rank, Referral benefits.</div>
+        <ul class="list" style="margin-top:10px;">
+          <li><span class="num">→</span><span class="txt"><strong>Passive warning (day 2):</strong> in-app banner if balance still &lt; $5: "Your rewards reset in 24h if balance stays below $5."</span></li>
+          <li><span class="num">→</span><span class="txt"><strong>Active warning:</strong> when user initiates withdraw that would bring balance below $5 → show confirmation modal first.</span></li>
+        </ul>
+        <div style="height:10px;"></div>
+        <div class="modal-wrap">
+          <div class="modal">
+            <div style="font-size:20px;">⚠️</div>
+            <div class="modal-title">You will lose all your rewards</div>
+            <div class="modal-body">Withdrawing this amount will bring your balance below <span style="color:var(--red);font-weight:500;">$5</span>. If it stays below $5 for 3 days, you will permanently lose:</div>
+            <div class="modal-loss">— Your current tier<br>— All accumulated points<br>— Leaderboard ranking<br>— Referral benefits</div>
+            <div class="btn-row">
+              <div class="btn-cancel">Keep balance</div>
+              <div class="btn-confirm">Withdraw anyway</div>
+            </div>
+          </div>
+        </div>
+        <div class="note-plain" style="margin-top:10px;">Copy: "You will lose" — not "you might". Direct, not alarmist. "Keep balance" is primary (left, default). "Withdraw anyway" is destructive (right).</div>
+      </div>
+    </div><!-- /ph1 -->
+
+    <!-- PHASE 3: GROWTH LOOP -->
+    <div class="phase-panel" id="ph2">
+      <div class="phase-header-bar">
+        <div class="ph-ind" style="background:var(--purple);"></div>
+        <div>
+          <div class="ph-title">Phase 3 — Growth Loop</div>
+          <div class="ph-dates">May 13 – Jul 13 · 60 days · Open access · Leaderboard · Referral amplification · TVL growth</div>
+        </div>
+      </div>
+
+      <div class="sub-label">3.1 · Open access — any user with Stellar wallet can enter</div>
+      <div class="card" style="margin-bottom:10px;"><ul class="list">
+        <li><span class="num">→</span><span class="txt"><strong>No waitlist.</strong> Any user with a Freighter wallet can enter — open access from day one of Phase 3.</span></li>
+        <li><span class="num">→</span><span class="txt">On first login: show <strong>"Syzy is live. Real markets, real USDC."</strong> card above main interface.</span></li>
+        <li><span class="num">→</span><span class="txt">Returning users from Phase 2: greet with <strong>"Welcome back. You've earned X pts since your last visit."</strong></span></li>
+        <li><span class="num">→</span><span class="txt">Permanent <strong>20% fee rebate</strong> for users who hit $100 cumulative volume in Beta — retained through Phase 3.</span></li>
+      </ul></div>
+
+      <div class="sub-label">3.2 · Post-trade CTA — re-entry (Phase 3 version)</div>
+      <div class="grid2">
+        <div class="card"><div class="card-label"><span class="dot g"></span>Re-entry prompt</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">CTA: <strong>"Enter next market → 2x points"</strong></span></li>
+          <li><span class="num">→</span><span class="txt">Show after PnL screen · Pre-fill amount from previous trade</span></li>
+          <li><span class="num">→</span><span class="txt">Goal: instant re-entry, recycle capital</span></li>
+        </ul></div>
+        <div class="card"><div class="card-label"><span class="dot p"></span>Multi-market requirement</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">Points unlock only if: <strong>≥ 2 markets traded</strong></span></li>
+          <li><span class="num">→</span><span class="txt">1 market only → reward locked — prevents one-off trade and exit</span></li>
+        </ul></div>
+      </div>
+
+      <div class="sub-label">3.3 · Leaderboard &amp; social proof loop</div>
+      <div class="grid2">
+        <div class="card"><div class="card-label"><span class="dot p"></span>In-app leaderboard</div><ul class="list">
+          <li><span class="num">→</span><span class="txt"><strong>Top 10 traders</strong> by cumulative PnL — shown as card on request</span></li>
+          <li><span class="num">→</span><span class="txt"><strong>Top 5 referrers</strong> — wallet + fees earned this month</span></li>
+          <li><span class="num">→</span><span class="txt">User's own rank shown: <strong>"You are #14 on the leaderboard"</strong></span></li>
+          <li><span class="num">→</span><span class="txt">CTA: <strong>"Share your rank on X"</strong> — 1-click, pre-filled tweet with Syzy tag</span></li>
+        </ul></div>
+        <div class="card"><div class="card-label"><span class="dot p"></span>Share-to-X integration</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">After each winning trade: <strong>"Share your PnL on X"</strong> button</span></li>
+          <li><span class="num">→</span><span class="txt">Pre-filled tweet with market name, PnL amount, @SyzyApp + referral link</span></li>
+          <li><span class="num">→</span><span class="txt">Each share = referral link embedded → organic acquisition loop</span></li>
+        </ul></div>
+      </div>
+
+      <div class="sub-label">3.4 · Referral loop — amplified</div>
+      <div class="grid2">
+        <div class="card"><div class="card-label"><span class="dot y"></span>Multi-tier referral</div><ul class="list">
+          <li><span class="num">→</span><span class="txt"><strong>Layer 1:</strong> earn % of referred user's trading fees — ongoing</span></li>
+          <li><span class="num">→</span><span class="txt"><strong>Layer 2:</strong> earn % of L1 referrals' fees — passive income loop</span></li>
+          <li><span class="num">→</span><span class="txt">Phase 3 bonus: <strong>double referral points</strong> for first 30 days of open access</span></li>
+        </ul></div>
+        <div class="card"><div class="card-label"><span class="dot y"></span>Referral eligibility</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">Rewards activate when invited user <strong>trades &gt; $10</strong> (qualified)</span></li>
+          <li><span class="num">→</span><span class="txt">Referral tier scales by number of qualified referrals — more referrals = higher % share</span></li>
+        </ul></div>
+      </div>
+
+      <div class="sub-label">3.5 · Withdrawal guard — with compound incentive</div>
+      <div class="card">
+        <ul class="list" style="margin-bottom:12px;">
+          <li><span class="num">→</span><span class="txt"><strong>Trigger:</strong> user clicks "Withdraw" — intercept before wallet sign, show warning modal first.</span></li>
+          <li><span class="num">→</span><span class="txt">Show exact $ at risk, exact tier/points to be lost, forfeited referral benefits.</span></li>
+          <li><span class="num">→</span><span class="txt">Phase 3 addition: show <strong>"If you trade instead, you'd earn +X pts and move up leaderboard by Y positions"</strong></span></li>
+        </ul>
+        <div class="note-box-teal"><p><strong>Dev note:</strong> "Keep balance" is primary (left). "Withdraw anyway" is destructive (right, red). Phase 3 adds specific projected points/rank gain — show real numbers, not generic copy.</p></div>
+      </div>
+    </div><!-- /ph2 -->
+
+  </div><!-- /plan-product -->
+
+</div>
+
+<script>
+function switchPlan(idx){
+  document.querySelectorAll('.ptab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  document.querySelectorAll('.plan-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
+}
+function switchMonth(idx){
+  document.querySelectorAll('.mtab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  document.querySelectorAll('.month-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
+}
+function switchPhase(idx){
+  document.querySelectorAll('.phtab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  document.querySelectorAll('.phase-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
+}
+</script>
+</body>
+</html>
