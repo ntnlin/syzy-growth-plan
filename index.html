@@ -71,6 +71,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-base);color:var(--text
 .phtab.ph3.active{background:rgba(167,139,250,0.08);border-color:rgba(167,139,250,0.3);}
 .phtab.ph3.active .phtab-label{color:var(--purple);}
 .phtab.ph3.active .phtab-num{color:var(--purple);}
+.phtab.ph4.active{background:rgba(248,113,113,0.08);border-color:rgba(248,113,113,0.3);}
+.phtab.ph4.active .phtab-label{color:var(--red);}
+.phtab.ph4.active .phtab-num{color:var(--red);}
 .phtab:hover:not(.active){background:#1a1c1c;}
 .phase-panel{display:none;}
 .phase-panel.active{display:block;}
@@ -263,7 +266,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-base);color:var(--text
     <div class="ptab" onclick="switchPlan(1)">
       <div class="ptab-icon">🛠</div>
       <div class="ptab-label">Product Growth Plan</div>
-      <div class="ptab-sub">Waitlist → Beta · Missions · PnL Share</div>
+      <div class="ptab-sub">User journey · Features · Phases</div>
     </div>
   </div>
 
@@ -396,46 +399,94 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-base);color:var(--text
         <div class="ph-ind" style="background:var(--yellow);"></div>
         <div>
           <div class="ph-title">Month 2 — Expand &amp; Volume</div>
-          <div class="ph-dates">May 13 – Jun 13 · 30 days · Open access · Protocol collabs · Volume push · Position sharing</div>
+          <div class="ph-dates">May 13 – Jun 13 · 30 days · Early Access · Code-gated · Mission loops · Competition · PnL sharing</div>
         </div>
       </div>
-      <div class="sec-heading"><div class="sec-num">1</div><div><div class="sec-title">KPI Targets</div><div class="sec-sub">Escalated targets — build on Month 1 base</div></div></div>
+      <div class="sec-heading"><div class="sec-num">1</div><div><div class="sec-title">KPI Targets</div><div class="sec-sub">Same as Month 1 — consistent grant reporting targets</div></div></div>
       <div class="card" style="margin-bottom:10px;"><table class="kpi-table">
         <thead><tr><th>Metric</th><th>Target</th><th>Notes</th></tr></thead>
         <tbody>
-          <tr><td>Active Users</td><td>80–120</td><td>Returning + new users via referral loop</td></tr>
-          <tr><td>Transactions</td><td>300–600</td><td>~3–5 tx per active user</td></tr>
-          <tr><td>Volume</td><td>$1,500–$3k</td><td>Access key referral loop driving volume</td></tr>
-          <tr><td>TVL</td><td>$600–$1k</td><td>Stake rebate tiers driving capital retention</td></tr>
-          <tr><td>PnL Shares on X</td><td>50+</td><td>Each share = referral link embedded → organic loop</td></tr>
-          <tr><td>New Markets Created</td><td>10–20</td><td>Each market creator pays 10 USDC fee + earns 1,000 pts</td></tr>
+          <tr><td>Activated Users (deposit + trade)</td><td>60–100</td><td>≥ $5 deposit + ≥ $5 trade · Early Access via code</td></tr>
+          <tr><td>Active Users</td><td>20–40</td><td>Repeat engagement, ≥ 2 trades/week</td></tr>
+          <tr><td>Transactions</td><td>180–500</td><td>~3–5 tx per active user</td></tr>
+          <tr><td>Trading Volume</td><td>$300–$1k</td><td>Mission loops + competition driving frequency</td></tr>
+          <tr><td>TVL (USDC on Stellar)</td><td>$300–$500</td><td>Stake tiers + inactivity penalty retaining funds on-platform</td></tr>
+          <tr><td>PnL Share on X</td><td>20+ posts</td><td>Each winning trade → 1-click share with referral link</td></tr>
         </tbody>
       </table></div>
       <div class="sec-heading"><div class="sec-num">2</div><div><div class="sec-title">Weekly Schedule</div></div></div>
-      <div class="week-block wk1"><div class="week-header"><span class="wnum">WEEK 1</span><div class="week-title">Open Access + Month 1 Results</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Launch</span></div></div><div class="week-body">
+      <div class="week-block wk1"><div class="week-header"><span class="wnum">WEEK 1</span><div class="week-title">Early Access Launch + Month 1 Results</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Launch</span></div></div><div class="week-body">
         <div class="week-item"><span class="wi-arr">→</span><div>Publish <strong>"Month 1 results"</strong> post — honest numbers (wallets, volume, trades, top markets) — transparency builds trust</div></div>
-        <div class="week-item"><span class="wi-arr">→</span><div><strong>Community #3 onboard</strong> — broader DeFi/prediction market TG. Budget: $200. Pinned post + intro</div></div>
-        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>referral leaderboard</strong> on X — top 5 wallets by invites, gamification goes public</div></div>
-        <div class="week-item"><span class="wi-arr">→</span><div>Reach out to <strong>Stellar ecosystem protocols</strong> on X — propose co-branded prediction market (e.g. "Will XLM hit $0.30?") as collab</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Drop <strong>Early Access codes</strong> on X — "First 50 to reply get a code" — creates urgency + X engagement loop</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div><strong>Community #3 onboard</strong> — broader DeFi/prediction market TG. Budget: $200. Pinned post + intro + Early Access code drop</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>referral leaderboard</strong> on X — top 5 wallets by invites this month, gamification goes public</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Launch <strong>Weekly Volume Competition</strong> — "Top 3 traders by vol this week win 2× pts multiplier next week" — drives aggressive trading</div></div>
       </div></div>
-      <div class="week-block wk2"><div class="week-header"><span class="wnum">WEEK 2</span><div class="week-title">Position Share Push + PnL Virality</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Social Loop</span></div></div><div class="week-body">
-        <div class="week-item"><span class="wi-arr">→</span><div>Launch <strong>"Share your position"</strong> campaign — push in-app share button, pre-filled tweet: "I'm trading [YES/NO] on [market] via @SyzyApp — on Stellar"</div></div>
+      <div class="week-block wk2"><div class="week-header"><span class="wnum">WEEK 2</span><div class="week-title">Position Share Push + CEX-style Competition</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Competition</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Launch <strong>"Trading Tournament"</strong> — 7-day leaderboard by PnL %, top 5 get bonus pts + featured on X. Loop: trade → climb → share → invite → repeat</div></div>
         <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"first user resolves a market"</strong> — screenshot with PnL card, real proof of payout working</div></div>
-        <div class="week-item"><span class="wi-arr">→</span><div>Thread: <strong>"How Syzy PnL sharing works"</strong> — each share = referral link = passive earnings for sharer</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Push <strong>Tier Alert mechanic</strong> — in-app: "You're 1 trade away from Gold tier — don't lose your streak" — FOMO to stay active</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div><strong>Community #4 onboard</strong> — airdrop/degen community. Budget: $200. Pinned post + competition announcement + referral promo code</div></div>
         <div class="week-item"><span class="wi-arr">→</span><div>Weekly TVL update on X — show growth, even small numbers demonstrate momentum</div></div>
       </div></div>
-      <div class="week-block wk3"><div class="week-header"><span class="wnum">WEEK 3</span><div class="week-title">Create Market Feature Push</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Product</span></div></div><div class="week-body">
-        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Create your own prediction market on Syzy"</strong> — explain the 60 USDC mechanics, 1,000 pts reward per market</div></div>
-        <div class="week-item"><span class="wi-arr">→</span><div>Show <strong>example user-created market</strong> — real market, real question, real resolution, drives FOMO to create</div></div>
+      <div class="week-block wk3"><div class="week-header"><span class="wnum">WEEK 3</span><div class="week-title">Mission Push + Create Market Feature</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Missions</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Complete 3 missions this week"</strong> challenge — public call to action, winners featured. Mission loop: login → daily trade → win trade → weekly vol → repeat</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Create your own prediction market on Syzy"</strong> — explain mechanics, 1,000 pts reward per market created</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Push <strong>"Points expiry warning"</strong> mechanic — in-app: "Your inactive streak resets points boost in 48h — trade now to keep it"</div></div>
         <div class="week-item"><span class="wi-arr">→</span><div>DM Stellar ecosystem newsletter writers — pitch Syzy for editorial mention (free, no pay-to-play)</div></div>
-        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>stake tier explainer</strong> — "Stake ≥$100 → 10% rebate. Stake ≥$500 → 50% rebate. Never withdraw." drives TVL retention</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>stake tier explainer</strong> — "Stake ≥$100 → 10% rebate. Stake ≥$500 → 50% rebate. Withdraw = lose tier instantly." — drives TVL retention</div></div>
       </div></div>
-      <div class="week-block wk4"><div class="week-header"><span class="wnum">WEEK 4</span><div class="week-title">Retention + Ecosystem Listing</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Retention</span></div></div><div class="week-body">
-        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Week 3 leaderboard"</strong> — top earners, top PnL sharers, most markets created</div></div>
-        <div class="week-item"><span class="wi-arr">→</span><div>DM inactive users who haven't traded in 48h — inactivity penalty reminder: "Your rewards reset if balance drops below $5 for 3 days"</div></div>
+      <div class="week-block wk4"><div class="week-header"><span class="wnum">WEEK 4</span><div class="week-title">Retention FOMO + Ecosystem Listing</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-red">FOMO</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Week 3 leaderboard"</strong> — top earners, top PnL sharers, most markets created. Call out #1 by wallet handle</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>DM inactive users who haven't traded in 48h — <strong>inactivity penalty reminder:</strong> "Your tier drops if balance stays below $5 for 3 days — don't lose your rank"</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Month 3 preview"</strong> — Public Launch incoming, new competitions, bigger leaderboard prize pool — creates anticipation</div></div>
         <div class="week-item"><span class="wi-arr">→</span><div>Submit Syzy to <strong>Stellar ecosystem map &amp; aggregator sites</strong> — TVL visibility = credibility</div></div>
-        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Month 2 preview"</strong> — what's coming, new markets planned, growing leaderboard</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Push <strong>end-of-month mission sprint</strong> — "48h left to complete monthly volume missions — hit $1k for 4,200 pts max"</div></div>
       </div></div>
+
+      <div class="sec-heading"><div class="sec-num">3</div><div><div class="sec-title">Content Calendar</div><div class="sec-sub">X is primary — community is for Q&amp;A and distribution</div></div></div>
+      <div class="grid2">
+        <div class="card"><div class="card-label"><span class="dot g"></span>X (Twitter) — 3–4 posts/week</div>
+          <div class="cal-day"><div class="cal-d">Mon</div><div class="cal-v"><strong>Competition update</strong> — leaderboard standings, who's winning, how close the race is</div></div>
+          <div class="cal-day"><div class="cal-d">Wed</div><div class="cal-v"><strong>Product proof</strong> — on-chain tx, PnL share screenshot, real trade results + mission completions</div></div>
+          <div class="cal-day"><div class="cal-d">Fri</div><div class="cal-v"><strong>FOMO / CTA</strong> — tier warnings, points expiry, weekend mission push, code drops</div></div>
+          <div class="cal-day"><div class="cal-d">Daily</div><div class="cal-v"><strong>Reply engagement</strong> — 5–10 Stellar/prediction tweets, add value organically</div></div>
+        </div>
+        <div class="card"><div class="card-label"><span class="dot b"></span>Community (TG/Discord) — distribution</div>
+          <div class="cal-day"><div class="cal-d">Weekly</div><div class="cal-v"><strong>Competition recap</strong> — active markets, leaderboard, current mission status</div></div>
+          <div class="cal-day"><div class="cal-d">On event</div><div class="cal-v"><strong>Milestone posts</strong> — only when something real happens (new market, big win, tier upgrade)</div></div>
+          <div class="cal-day"><div class="cal-d">Always</div><div class="cal-v"><strong>Respond to questions</strong> — within 4h, community is for Q&amp;A not broadcast</div></div>
+        </div>
+      </div>
+
+      <div class="sec-heading"><div class="sec-num">4</div><div><div class="sec-title">Community Budget</div><div class="sec-sub">$200/community · 2 communities this month</div></div></div>
+      <div class="grid2">
+        <div class="card"><div class="card-label"><span class="dot y"></span>Community #3 · $200 · Wk 1</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">DeFi/prediction market TG group (200–500 active members)</span></li>
+          <li><span class="num">→</span><span class="txt">Pinned announcement post · Early Access code drop · 7-day pin duration</span></li>
+          <li><span class="num">→</span><span class="txt">Verify member activity before paying 50% balance</span></li>
+        </ul></div>
+        <div class="card"><div class="card-label"><span class="dot y"></span>Community #4 · $200 · Wk 2</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">Airdrop/degen TG or predict-focused Discord server</span></li>
+          <li><span class="num">→</span><span class="txt">Pinned post + competition announcement + referral promo code</span></li>
+          <li><span class="num">→</span><span class="txt">Payment: 50% upfront, 50% on delivery</span></li>
+        </ul></div>
+      </div>
+
+      <div class="sec-heading"><div class="sec-num">5</div><div><div class="sec-title">Grant Plan — Month 2 Allocation</div><div class="sec-sub">Focus: on-chain trading activity · Competitions · Liquidity</div></div></div>
+      <div class="card"><table class="grant-table">
+        <thead><tr><th>Category</th><th>Budget</th><th>%</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Trading Competitions &amp; Missions</td><td>$600</td><td>20%</td><td>Weekly leaderboard prizes, mission reward pool, tournament incentives</td></tr>
+          <tr><td>Liquidity Pool (Market Bootstrapping)</td><td>$600</td><td>20%</td><td>Seed new markets for Early Access — keep YES/NO markets liquid</td></tr>
+          <tr><td>Backend &amp; Smart Contract Development</td><td>$600</td><td>20%</td><td>Code-gate logic, leaderboard infra, mission tracking, Early Access flows</td></tr>
+          <tr><td>Infrastructure</td><td>$500</td><td>17%</td><td>RPC access, indexers, cloud hosting, performance under Early Access load</td></tr>
+          <tr><td>Distribution &amp; Growth Engine</td><td>$400</td><td>13%</td><td>Community buys ($200×2), access code distribution, X growth loops</td></tr>
+          <tr><td>Security &amp; Monitoring</td><td>$300</td><td>10%</td><td>Transaction monitoring, on-chain analytics dashboards</td></tr>
+          <tr><td>Tools &amp; Workspace</td><td>$0</td><td>0%</td><td>Covered by Month 1 allocation</td></tr>
+          <tr class="grant-total"><td>Total</td><td>$3,000</td><td>100%</td><td>No grant funds allocated to salaries — all used to drive on-chain trading activity</td></tr>
+        </tbody>
+      </table></div>
     </div><!-- /m1 -->
 
     <!-- MONTH 3 -->
@@ -444,41 +495,93 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-base);color:var(--text
         <div class="ph-ind" style="background:var(--purple);"></div>
         <div>
           <div class="ph-title">Month 3 — Scale &amp; Retain</div>
-          <div class="ph-dates">Jun 13 – Jul 13 · 30 days · Full open access · Deep ecosystem · Referral amplification</div>
+          <div class="ph-dates">Jun 13 – Jul 13 · 30 days · Public Launch · Open access · Season 1 Tournament · Referral amplification</div>
         </div>
       </div>
-      <div class="sec-heading"><div class="sec-num">1</div><div><div class="sec-title">KPI Targets</div></div></div>
+      <div class="sec-heading"><div class="sec-num">1</div><div><div class="sec-title">KPI Targets</div><div class="sec-sub">Same as Month 1 — consistent grant reporting targets</div></div></div>
       <div class="card" style="margin-bottom:10px;"><table class="kpi-table">
         <thead><tr><th>Metric</th><th>Target</th><th>Notes</th></tr></thead>
         <tbody>
-          <tr><td>Active Users</td><td>120–200</td><td>Referral-driven growth, word of mouth from PnL shares</td></tr>
-          <tr><td>Transactions</td><td>500–1,000</td><td>Multi-market requirement + daily missions driving frequency</td></tr>
-          <tr><td>Volume</td><td>$3k–$6k</td><td>Stake tiers + FOMO from cumulative volume missions (up to 4,200 pts at $1k)</td></tr>
-          <tr><td>TVL</td><td>$1k–$2k</td><td>Compound effect of staking rebates + inactivity penalty</td></tr>
-          <tr><td>Referral Chains</td><td>2-layer active</td><td>Layer 2 earner mechanics go public — drive multi-tier growth</td></tr>
+          <tr><td>Activated Users (deposit + trade)</td><td>60–100</td><td>≥ $5 deposit + ≥ $5 trade · Public Launch — open access</td></tr>
+          <tr><td>Active Users</td><td>20–40</td><td>Repeat engagement, ≥ 2 trades/week</td></tr>
+          <tr><td>Transactions</td><td>180–500</td><td>~3–5 tx per active user</td></tr>
+          <tr><td>Trading Volume</td><td>$300–$1k</td><td>Mission loops + competition + leaderboard driving frequency</td></tr>
+          <tr><td>TVL (USDC on Stellar)</td><td>$300–$500</td><td>Stake tiers + inactivity penalty retaining funds on-platform</td></tr>
+          <tr><td>PnL Share on X</td><td>20+ posts</td><td>Each winning trade → 1-click share with referral link</td></tr>
         </tbody>
       </table></div>
       <div class="sec-heading"><div class="sec-num">2</div><div><div class="sec-title">Weekly Schedule</div></div></div>
-      <div class="week-block wk1"><div class="week-header"><span class="wnum">WEEK 1</span><div class="week-title">Month 2 Results + Referral Amplification</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Referral</span></div></div><div class="week-body">
-        <div class="week-item"><span class="wi-arr">→</span><div>Publish <strong>"Month 2 numbers"</strong> — transparency post, show volume growth, PnL shares, market count</div></div>
+      <div class="week-block wk1"><div class="week-header"><span class="wnum">WEEK 1</span><div class="week-title">Public Launch + Month 2 Results + Referral Amplification</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Launch</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Publish <strong>"Month 2 numbers"</strong> — transparency post, show volume growth, PnL shares, market count, competition winners</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Announce <strong>Public Launch</strong> — "No code needed. Anyone can trade. Real USDC, on-chain." — big post, maximum reach</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Launch <strong>Season 1 Grand Tournament</strong> — 30-day leaderboard by cumulative PnL. Top 10 win major pts multipliers + featured permanently on leaderboard</div></div>
         <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Layer 2 referral explained"</strong> — "Your referral trades → you earn. Their referrals trade → you earn too." Drives aggressive invite behavior</div></div>
-        <div class="week-item"><span class="wi-arr">→</span><div><strong>Community #4 onboard</strong> — broader crypto/DeFi audience. Budget: $200. Pinned post + referral bonus for first 50 sign-ups</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div><strong>Community #5 onboard</strong> — broader crypto/DeFi or predict community. Budget: $200. Pinned post + referral bonus for first 50 sign-ups</div></div>
       </div></div>
-      <div class="week-block wk2"><div class="week-header"><span class="wnum">WEEK 2</span><div class="week-title">Position Share + Volume Milestone Push</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Milestones</span></div></div><div class="week-body">
-        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Top 10 all-time positions on Syzy"</strong> — real PnL cards, real wallets, drives aspiration</div></div>
-        <div class="week-item"><span class="wi-arr">→</span><div>Push <strong>Volume V milestone</strong> ($1k cumulative = 4,200 pts = 8,400 pts with 2×) — thread showing points math, creates FOMO</div></div>
+      <div class="week-block wk2"><div class="week-header"><span class="wnum">WEEK 2</span><div class="week-title">Position Share + Volume Milestone Competition</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-content">Competition</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Top 10 all-time positions on Syzy"</strong> — real PnL cards, real wallets, drives aspiration and FOMO to compete</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Push <strong>Volume V milestone</strong> ($1k cumulative = 4,200 pts = 8,400 pts with 2×) — thread showing points math, "how close are you?"</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Push <strong>Tier decay warning</strong> — in-app: "You haven't traded in 48h. Your tier drops if balance stays below $5 for 3 days." — must feel urgent</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div><strong>Community #6 onboard</strong> — second community this month. Budget: $200. Tournament announcement + access CTA</div></div>
         <div class="week-item"><span class="wi-arr">→</span><div>Reply to Stellar ecosystem projects' X posts — consistent, genuine engagement builds relationships</div></div>
       </div></div>
-      <div class="week-block wk3"><div class="week-header"><span class="wnum">WEEK 3</span><div class="week-title">Ecosystem Integration + Press</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-stellar">Ecosystem</span></div></div><div class="week-body">
+      <div class="week-block wk3"><div class="week-header"><span class="wnum">WEEK 3</span><div class="week-title">Mission Sprint + Ecosystem Integration</div><div class="week-tags"><span class="tag tag-x">X</span><span class="tag tag-stellar">Ecosystem</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Mid-season leaderboard standings"</strong> — who's in top 10, how much pts separate #1 from #5. Weekly update loop drives daily check-ins</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Push <strong>"Mission blitz"</strong> — in-app + X: "Complete 5 missions this week for 2× multiplier on all pts earned" — CEX-style event loop</div></div>
         <div class="week-item"><span class="wi-arr">→</span><div>Pitch Syzy to <strong>2–3 crypto newsletters</strong> covering Stellar ecosystem — editorial coverage, not paid</div></div>
         <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"Syzy on-chain stats"</strong> — total volume, total markets, total traders. Verifiable on-chain proof for grant reporting</div></div>
         <div class="week-item"><span class="wi-arr">→</span><div>Co-branded market with <strong>a Stellar protocol</strong> — "Will [Protocol X] TVL hit $Y by [date]?" — mutual promotion</div></div>
       </div></div>
-      <div class="week-block wk4"><div class="week-header"><span class="wnum">WEEK 4</span><div class="week-title">Retention &amp; Grant Reporting Prep</div><div class="week-tags"><span class="tag tag-content">Retention</span></div></div><div class="week-body">
+      <div class="week-block wk4"><div class="week-header"><span class="wnum">WEEK 4</span><div class="week-title">Season 1 Finale + Grant Reporting Prep</div><div class="week-tags"><span class="tag tag-red">FOMO</span><span class="tag tag-content">Retention</span></div></div><div class="week-body">
+        <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"72h left in Season 1"</strong> countdown — daily posts, show leaderboard gaps, push stragglers to trade aggressively</div></div>
+        <div class="week-item"><span class="wi-arr">→</span><div>Push <strong>"final mission sprint"</strong> — in-app banner: "Last 48h — complete your monthly missions now or lose the pts forever"</div></div>
         <div class="week-item"><span class="wi-arr">→</span><div>Post <strong>"3-month recap"</strong> — total on-chain activity, verifiable metrics, ecosystem impact story</div></div>
         <div class="week-item"><span class="wi-arr">→</span><div>DM power users (top traders/referrers) for <strong>testimonials</strong> — "What's your biggest win on Syzy?" content series</div></div>
         <div class="week-item"><span class="wi-arr">→</span><div>Prepare <strong>grant report deliverables</strong> — on-chain tx evidence, wallet count, TVL screenshots, volume proof</div></div>
       </div></div>
+
+      <div class="sec-heading"><div class="sec-num">3</div><div><div class="sec-title">Content Calendar</div><div class="sec-sub">X is primary — community is for Q&amp;A and distribution</div></div></div>
+      <div class="grid2">
+        <div class="card"><div class="card-label"><span class="dot p"></span>X (Twitter) — 3–4 posts/week</div>
+          <div class="cal-day"><div class="cal-d">Mon</div><div class="cal-v"><strong>Tournament standings</strong> — leaderboard update, who moved up/down, pts gap at top</div></div>
+          <div class="cal-day"><div class="cal-d">Wed</div><div class="cal-v"><strong>On-chain proof</strong> — verified volume, PnL cards, market resolutions, grant-ready stats</div></div>
+          <div class="cal-day"><div class="cal-d">Fri</div><div class="cal-v"><strong>FOMO / mission push</strong> — weekend sprint CTA, tier warnings, referral loop reminder</div></div>
+          <div class="cal-day"><div class="cal-d">Daily</div><div class="cal-v"><strong>Reply engagement</strong> — 5–10 Stellar/prediction tweets, add value organically</div></div>
+        </div>
+        <div class="card"><div class="card-label"><span class="dot b"></span>Community (TG/Discord) — distribution</div>
+          <div class="cal-day"><div class="cal-d">Weekly</div><div class="cal-v"><strong>Tournament recap</strong> — active markets, leaderboard, mission status, volume progress</div></div>
+          <div class="cal-day"><div class="cal-d">On event</div><div class="cal-v"><strong>Milestone posts</strong> — only when something real happens (market resolved, top 10 change)</div></div>
+          <div class="cal-day"><div class="cal-d">Always</div><div class="cal-v"><strong>Respond to questions</strong> — within 4h, community is for Q&amp;A not broadcast</div></div>
+        </div>
+      </div>
+
+      <div class="sec-heading"><div class="sec-num">4</div><div><div class="sec-title">Community Budget</div><div class="sec-sub">$200/community · 2 communities this month</div></div></div>
+      <div class="grid2">
+        <div class="card"><div class="card-label"><span class="dot p"></span>Community #5 · $200 · Wk 1</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">Broader crypto/DeFi or predict-focused TG (500+ active members preferred)</span></li>
+          <li><span class="num">→</span><span class="txt">Pinned Public Launch announcement · Season 1 Tournament CTA · 7-day pin</span></li>
+          <li><span class="num">→</span><span class="txt">Verify member activity before paying 50% balance</span></li>
+        </ul></div>
+        <div class="card"><div class="card-label"><span class="dot p"></span>Community #6 · $200 · Wk 2</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">Airdrop/degen community or second predict TG/Discord</span></li>
+          <li><span class="num">→</span><span class="txt">Pinned post + Season 1 leaderboard screenshot + referral CTA</span></li>
+          <li><span class="num">→</span><span class="txt">Payment: 50% upfront, 50% on delivery</span></li>
+        </ul></div>
+      </div>
+
+      <div class="sec-heading"><div class="sec-num">5</div><div><div class="sec-title">Grant Plan — Month 3 Allocation</div><div class="sec-sub">Focus: Season 1 Tournament · Retention · Grant closing metrics</div></div></div>
+      <div class="card"><table class="grant-table">
+        <thead><tr><th>Category</th><th>Budget</th><th>%</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Season 1 Tournament Prize Pool</td><td>$700</td><td>23%</td><td>Top 10 leaderboard rewards, mission completion bonuses, volume milestone prizes</td></tr>
+          <tr><td>Liquidity Pool (Market Bootstrapping)</td><td>$600</td><td>20%</td><td>Seed new markets for Public Launch — maintain YES/NO market liquidity</td></tr>
+          <tr><td>Backend &amp; Infrastructure</td><td>$700</td><td>23%</td><td>Tournament infra, public launch scaling, on-chain analytics for grant reporting</td></tr>
+          <tr><td>Distribution &amp; Growth Engine</td><td>$400</td><td>13%</td><td>Community buys ($200×2), X growth loops, ecosystem outreach</td></tr>
+          <tr><td>Security &amp; Monitoring</td><td>$300</td><td>10%</td><td>Increased monitoring under public load, grant-ready on-chain evidence collection</td></tr>
+          <tr><td>Frontend</td><td>$300</td><td>11%</td><td>Tournament UI, Season 1 finale screens, final leaderboard display</td></tr>
+          <tr class="grant-total"><td>Total</td><td>$3,000</td><td>100%</td><td>No grant funds allocated to salaries — all used to drive on-chain trading activity</td></tr>
+        </tbody>
+      </table></div>
     </div><!-- /m2 -->
 
   </div><!-- /plan-marketing -->
@@ -500,8 +603,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-base);color:var(--text
       </div>
       <div class="phtab ph3" onclick="switchPhase(2)">
         <div class="phtab-num">Phase 3</div>
-        <div class="phtab-label">Growth Loop</div>
-        <div class="phtab-date">May 13 → Jul 13</div>
+        <div class="phtab-label">Early Access</div>
+        <div class="phtab-date">May 13 → Jun 13</div>
+      </div>
+      <div class="phtab ph4" onclick="switchPhase(3)">
+        <div class="phtab-num">Phase 4</div>
+        <div class="phtab-label">Public Launch</div>
+        <div class="phtab-date">Jun 13 → Jul 13</div>
       </div>
     </div>
 
@@ -708,25 +816,27 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-base);color:var(--text
       </div>
     </div><!-- /ph1 -->
 
-    <!-- PHASE 3: GROWTH LOOP -->
+    <!-- PHASE 3: EARLY ACCESS -->
     <div class="phase-panel" id="ph2">
       <div class="phase-header-bar">
         <div class="ph-ind" style="background:var(--purple);"></div>
         <div>
-          <div class="ph-title">Phase 3 — Growth Loop</div>
-          <div class="ph-dates">May 13 – Jul 13 · 60 days · Open access · Leaderboard · Referral amplification · TVL growth</div>
+          <div class="ph-title">Phase 3 — Early Access</div>
+          <div class="ph-dates">May 13 – Jun 13 · 30 days · Code-gated access · Leaderboard · Referral amplification · TVL growth</div>
         </div>
       </div>
 
-      <div class="sub-label">3.1 · Open access — any user with Stellar wallet can enter</div>
+      <div class="sub-label">3.1 · Access gate — invite code required</div>
       <div class="card" style="margin-bottom:10px;"><ul class="list">
-        <li><span class="num">→</span><span class="txt"><strong>No waitlist.</strong> Any user with a Freighter wallet can enter — open access from day one of Phase 3.</span></li>
-        <li><span class="num">→</span><span class="txt">On first login: show <strong>"Syzy is live. Real markets, real USDC."</strong> card above main interface.</span></li>
-        <li><span class="num">→</span><span class="txt">Returning users from Phase 2: greet with <strong>"Welcome back. You've earned X pts since your last visit."</strong></span></li>
-        <li><span class="num">→</span><span class="txt">Permanent <strong>20% fee rebate</strong> for users who hit $100 cumulative volume in Beta — retained through Phase 3.</span></li>
+        <li><span class="num">→</span><span class="txt"><strong>Code-gated.</strong> Users need an invite code to access Early Access. No code = no entry.</span></li>
+        <li><span class="num">→</span><span class="txt"><strong>"Find Access Code"</strong> button on landing screen — tapping redirects directly to <a href="https://x.com/search?q=syzy+access+code&src=typed_query&f=live" target="_blank" style="color:var(--brand);">Syzy X account</a> search for access codes, boosting search volume metrics.</span></li>
+        <li><span class="num">→</span><span class="txt">Codes distributed via X posts, community announcements, and top referrer rewards.</span></li>
+        <li><span class="num">→</span><span class="txt">On first login with valid code: show <strong>"You're in Early Access. Claim Early Access Rewards now →"</strong> card above main interface — CTA links to referral/rewards page.</span></li>
+        <li><span class="num">→</span><span class="txt">On the rewards claim page: add <strong>"Share on X to 2× your rewards"</strong> prompt — sharing a pre-filled post doubles the claimable reward for that session. Referral link auto-embedded in the share.</span></li>
+        <li><span class="num">→</span><span class="txt">Permanent <strong>20% fee rebate</strong> for users who hit $100 cumulative volume in Beta — retained through Early Access.</span></li>
       </ul></div>
 
-      <div class="sub-label">3.2 · Post-trade CTA — re-entry (Phase 3 version)</div>
+      <div class="sub-label">3.2 · Post-trade CTA — re-entry loop</div>
       <div class="grid2">
         <div class="card"><div class="card-label"><span class="dot g"></span>Re-entry prompt</div><ul class="list">
           <li><span class="num">→</span><span class="txt">CTA: <strong>"Enter next market → 2x points"</strong></span></li>
@@ -759,7 +869,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-base);color:var(--text
         <div class="card"><div class="card-label"><span class="dot y"></span>Multi-tier referral</div><ul class="list">
           <li><span class="num">→</span><span class="txt"><strong>Layer 1:</strong> earn % of referred user's trading fees — ongoing</span></li>
           <li><span class="num">→</span><span class="txt"><strong>Layer 2:</strong> earn % of L1 referrals' fees — passive income loop</span></li>
-          <li><span class="num">→</span><span class="txt">Phase 3 bonus: <strong>double referral points</strong> for first 30 days of open access</span></li>
+          <li><span class="num">→</span><span class="txt">Early Access bonus: <strong>double referral points</strong> for first 30 days</span></li>
         </ul></div>
         <div class="card"><div class="card-label"><span class="dot y"></span>Referral eligibility</div><ul class="list">
           <li><span class="num">→</span><span class="txt">Rewards activate when invited user <strong>trades &gt; $10</strong> (qualified)</span></li>
@@ -772,11 +882,81 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg-base);color:var(--text
         <ul class="list" style="margin-bottom:12px;">
           <li><span class="num">→</span><span class="txt"><strong>Trigger:</strong> user clicks "Withdraw" — intercept before wallet sign, show warning modal first.</span></li>
           <li><span class="num">→</span><span class="txt">Show exact $ at risk, exact tier/points to be lost, forfeited referral benefits.</span></li>
-          <li><span class="num">→</span><span class="txt">Phase 3 addition: show <strong>"If you trade instead, you'd earn +X pts and move up leaderboard by Y positions"</strong></span></li>
+          <li><span class="num">→</span><span class="txt">Early Access addition: show <strong>"If you trade instead, you'd earn +X pts and move up leaderboard by Y positions"</strong></span></li>
         </ul>
-        <div class="note-box-teal"><p><strong>Dev note:</strong> "Keep balance" is primary (left). "Withdraw anyway" is destructive (right, red). Phase 3 adds specific projected points/rank gain — show real numbers, not generic copy.</p></div>
+        <div class="note-box-teal"><p><strong>Dev note:</strong> "Keep balance" is primary (left). "Withdraw anyway" is destructive (right, red). Show specific projected points/rank gain — real numbers, not generic copy.</p></div>
       </div>
     </div><!-- /ph2 -->
+
+    <!-- PHASE 4: PUBLIC LAUNCH -->
+    <div class="phase-panel" id="ph3">
+      <div class="phase-header-bar">
+        <div class="ph-ind" style="background:var(--red);"></div>
+        <div>
+          <div class="ph-title">Phase 4 — Public Launch</div>
+          <div class="ph-dates">Jun 13 – Jul 13 · 30 days · Open access · No invite code · Full leaderboard · Referral amplification</div>
+        </div>
+      </div>
+
+      <div class="sub-label">4.1 · Open access — any user with Stellar wallet can enter</div>
+      <div class="card" style="margin-bottom:10px;"><ul class="list">
+        <li><span class="num">→</span><span class="txt"><strong>No invite code required.</strong> Any user with a Freighter wallet can enter — fully open from day one of Phase 4.</span></li>
+        <li><span class="num">→</span><span class="txt">On first login: show <strong>"Syzy is live. Real markets, real USDC."</strong> card above main interface.</span></li>
+        <li><span class="num">→</span><span class="txt">Returning users from Early Access: greet with <strong>"Welcome back. You've earned X pts since your last visit."</strong></span></li>
+        <li><span class="num">→</span><span class="txt">Permanent <strong>20% fee rebate</strong> for users who hit $100 cumulative volume in Early Access — retained through Public Launch.</span></li>
+      </ul></div>
+
+      <div class="sub-label">4.2 · Post-trade CTA — re-entry (Public Launch version)</div>
+      <div class="grid2">
+        <div class="card"><div class="card-label"><span class="dot g"></span>Re-entry prompt</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">CTA: <strong>"Enter next market → 2x points"</strong></span></li>
+          <li><span class="num">→</span><span class="txt">Show after PnL screen · Pre-fill amount from previous trade</span></li>
+          <li><span class="num">→</span><span class="txt">Goal: instant re-entry, recycle capital</span></li>
+        </ul></div>
+        <div class="card"><div class="card-label"><span class="dot p"></span>Multi-market requirement</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">Points unlock only if: <strong>≥ 2 markets traded</strong></span></li>
+          <li><span class="num">→</span><span class="txt">1 market only → reward locked — prevents one-off trade and exit</span></li>
+        </ul></div>
+      </div>
+
+      <div class="sub-label">4.3 · Leaderboard &amp; social proof loop</div>
+      <div class="grid2">
+        <div class="card"><div class="card-label"><span class="dot p"></span>In-app leaderboard</div><ul class="list">
+          <li><span class="num">→</span><span class="txt"><strong>Top 10 traders</strong> by cumulative PnL — shown as card on request</span></li>
+          <li><span class="num">→</span><span class="txt"><strong>Top 5 referrers</strong> — wallet + fees earned this month</span></li>
+          <li><span class="num">→</span><span class="txt">User's own rank shown: <strong>"You are #14 on the leaderboard"</strong></span></li>
+          <li><span class="num">→</span><span class="txt">CTA: <strong>"Share your rank on X"</strong> — 1-click, pre-filled tweet with Syzy tag</span></li>
+        </ul></div>
+        <div class="card"><div class="card-label"><span class="dot p"></span>Share-to-X integration</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">After each winning trade: <strong>"Share your PnL on X"</strong> button</span></li>
+          <li><span class="num">→</span><span class="txt">Pre-filled tweet with market name, PnL amount, @SyzyApp + referral link</span></li>
+          <li><span class="num">→</span><span class="txt">Each share = referral link embedded → organic acquisition loop</span></li>
+        </ul></div>
+      </div>
+
+      <div class="sub-label">4.4 · Referral loop — full amplification</div>
+      <div class="grid2">
+        <div class="card"><div class="card-label"><span class="dot y"></span>Multi-tier referral</div><ul class="list">
+          <li><span class="num">→</span><span class="txt"><strong>Layer 1:</strong> earn % of referred user's trading fees — ongoing</span></li>
+          <li><span class="num">→</span><span class="txt"><strong>Layer 2:</strong> earn % of L1 referrals' fees — passive income loop</span></li>
+          <li><span class="num">→</span><span class="txt">Launch bonus: <strong>double referral points</strong> for first 30 days of public access</span></li>
+        </ul></div>
+        <div class="card"><div class="card-label"><span class="dot y"></span>Referral eligibility</div><ul class="list">
+          <li><span class="num">→</span><span class="txt">Rewards activate when invited user <strong>trades &gt; $10</strong> (qualified)</span></li>
+          <li><span class="num">→</span><span class="txt">Referral tier scales by number of qualified referrals — more referrals = higher % share</span></li>
+        </ul></div>
+      </div>
+
+      <div class="sub-label">4.5 · Withdrawal guard — with compound incentive</div>
+      <div class="card">
+        <ul class="list" style="margin-bottom:12px;">
+          <li><span class="num">→</span><span class="txt"><strong>Trigger:</strong> user clicks "Withdraw" — intercept before wallet sign, show warning modal first.</span></li>
+          <li><span class="num">→</span><span class="txt">Show exact $ at risk, exact tier/points to be lost, forfeited referral benefits.</span></li>
+          <li><span class="num">→</span><span class="txt">Public Launch addition: show <strong>"If you trade instead, you'd earn +X pts and move up leaderboard by Y positions"</strong></span></li>
+        </ul>
+        <div class="note-box-teal"><p><strong>Dev note:</strong> "Keep balance" is primary (left). "Withdraw anyway" is destructive (right, red). Show specific projected points/rank gain — real numbers, not generic copy.</p></div>
+      </div>
+    </div><!-- /ph3 -->
 
   </div><!-- /plan-product -->
 
